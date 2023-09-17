@@ -16,3 +16,4 @@
  - [Course resources](https://drive.google.com/drive/folders/1nM2aUtLxQntg8YqRaF9wOKlxYzuLguFh?usp=drive_link)
 ## Comments
  - A Docker virtualization of Postgres must be created
+ - Java 11 SDK was used
