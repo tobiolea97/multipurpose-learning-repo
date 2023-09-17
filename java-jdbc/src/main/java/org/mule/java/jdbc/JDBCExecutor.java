@@ -21,17 +21,8 @@ public class JDBCExecutor
         try{
             Connection connection = dcm.getConnection();
             CustomerDAO customerDAO = new CustomerDAO(connection);
-            Customer customer = new Customer();
-            customer.setFirstName("Leonel");
-            customer.setLastName("Messi");
-            customer.setEmail("leomessi@gmail.com");
-            customer.setPhone("132456798");
-            customer.setAddress("Alvear 575");
-            customer.setCity("Miameee");
-            customer.setState("VA");
-            customer.setZipCode("22121");
-
-            customerDAO.create(customer);
+            Customer customer = customerDAO.findById(1000);
+            System.out.println(customer.getFirstName() + " " + customer.getLastName());
 
         } catch (SQLException e) {
             e.printStackTrace();
