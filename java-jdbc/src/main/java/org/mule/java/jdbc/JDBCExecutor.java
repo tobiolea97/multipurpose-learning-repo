@@ -21,10 +21,15 @@ public class JDBCExecutor
         try{
             Connection connection = dcm.getConnection();
             CustomerDAO customerDAO = new CustomerDAO(connection);
-            Customer customer = customerDAO.findById(1000);
-            System.out.println(customer.getFirstName() + " " + customer.getLastName());
-
-        } catch (SQLException e) {
+            Customer customer = customerDAO.findById(1098);
+            System.out.println(customer.getFirstName() + " " + customer.getLastName() + " " +
+                    customer.getEmail());
+            customer.setEmail("messiiiiii@wh.gov");
+            customer.setFirstName("Leonel Andres");
+            customer = customerDAO.update(customer);
+            System.out.println(customer.getFirstName() + " " + customer.getLastName() + " " +
+                    customer.getEmail());
+        }catch(SQLException e){
             e.printStackTrace();
         }
 
