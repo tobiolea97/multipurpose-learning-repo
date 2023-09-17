@@ -1,5 +1,7 @@
 package org.mule.java.jdbc;
 
+import org.mule.java.jdbc.util.CustomerDAO;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,11 +20,19 @@ public class JDBCExecutor
 
         try{
             Connection connection = dcm.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT COUNT (*) FROM CUSTOMER");
-            while(resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
-            }
+            CustomerDAO customerDAO = new CustomerDAO(connection);
+            Customer customer = new Customer();
+            customer.setFirstName("Leonel");
+            customer.setLastName("Messi");
+            customer.setEmail("leomessi@gmail.com");
+            customer.setPhone("132456798");
+            customer.setAddress("Alvear 575");
+            customer.setCity("Miameee");
+            customer.setState("VA");
+            customer.setZipCode("22121");
+
+            customerDAO.create(customer);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
