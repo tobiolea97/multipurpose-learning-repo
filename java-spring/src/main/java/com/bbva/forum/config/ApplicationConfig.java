@@ -11,6 +11,6 @@ import org.springframework.context.annotation.PropertySource;
 @EnableAspectJAutoProxy
 public class ApplicationConfig {
 
-    
+
 
 }
