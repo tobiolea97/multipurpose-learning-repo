@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -13,8 +14,8 @@ import java.util.function.Predicate;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
+
         Room cambridge = new Room("Cambridge", "Premiere Room", 4, 175.00);
         Room manchester = new Room("Manchester", "Suite", 5, 250.00);
         Room oxford = new Room("Oxford", "Suite", 5, 225.0);
@@ -24,14 +25,40 @@ public class App
         oxford.setPetFriendly(true);
         victoria.setPetFriendly(true);
 
-        // we "start" a pipeline that will process the collection
+
+
+        // ****** NEVER WORK WITH EXTERNAL OBJECTS INSIDE YOUR STREAM AND
+        // ****** MODIFY OBJECTS INSIDE YOUR STREAM AT THE SAME TIME
+        /*
+        Collection<Room> petFriendlyRooms = new ArrayList<>();
         rooms.stream()
-                // filter will be used to decide if an element will continue through the flow
-                .filter(room -> room.isPetFriendly()) //alternative 1
-                .filter(Room::isPetFriendly) //alternative 2
-                // for each is a terminal operation
-                // a terminal operation is either going to return a result or modify the elements that are streamed
-                .forEach(room -> System.out.println(room.getName()));
+                .filter(Room::isPetFriendly)
+                .forEach(room -> petFriendlyRooms.add(room));
+        */
+
+        // THIS IS THE CORRECT WAY
+        Collection<Room> petFriendlyRooms = rooms.stream()
+                .filter(Room::isPetFriendly)
+                .collect(Collectors.toList());
+
+        // THIS IS ONE ALTERNATIVE FOR PRINTING OUT
+        petFriendlyRooms.stream()
+                .forEach(r -> System.out.println(r.getName()));
+
+        // THIS IS A BETTER ALTERNATIVE FOR PRINTING OUT
+        petFriendlyRooms.stream()
+                // map transform the element that flows out of the operation
+                // after this, the stream will be only a list of names
+                .map(r -> r.getName())
+                // System.out::println is a method reference
+                .forEach(System.out::println);
+
+
+        double total = petFriendlyRooms.stream()
+                .mapToDouble(Room::getRate)
+                .sum();
+
+        System.out.println(total);
 
     }
 }
