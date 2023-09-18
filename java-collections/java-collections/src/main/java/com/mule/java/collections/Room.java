@@ -10,6 +10,8 @@ public class Room {
 
     private double rate;
 
+    private boolean petFriendly;
+
     public Room(String name, String type, int capacity, double rate) {
         this.name = name;
         this.type = type;
@@ -47,6 +49,14 @@ public class Room {
 
     public void setRate(double rate) {
         this.rate = rate;
+    }
+
+    public boolean isPetFriendly() {
+        return petFriendly;
+    }
+
+    public void setPetFriendly(boolean petFriendly) {
+        this.petFriendly = petFriendly;
     }
 
     @Override
@@ -87,4 +97,3 @@ public class Room {
 
 
 }
-
