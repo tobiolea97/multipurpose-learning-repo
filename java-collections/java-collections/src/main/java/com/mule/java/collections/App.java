@@ -22,15 +22,38 @@ public class App
         oxford.setPetFriendly(true);
         victoria.setPetFriendly(true);
 
+        // this will throw a ConcurrentModificationException
+        /*
         for(Room room : rooms) {
-
             if(room.isPetFriendly()) {
                 rooms.remove(room);
             }
+        }
+        */
 
+        // this is one approach we could take if we want to remove elements from a collection
+        /*
+        Collection<Room> removeRooms = new ArrayList<>();
+        for(Room room : rooms) {
+            if(room.isPetFriendly()) {
+                removeRooms.add(room);
+            }
+        }
+        rooms.removeAll(removeRooms);
+        */
+
+        // this is another approach
+        Iterator<Room> iterator = rooms.iterator();
+        Collection<Room> removeRooms = new ArrayList<>();
+        while (iterator.hasNext()) {
+            Room room = iterator.next();
+            if(room.isPetFriendly()) {
+                iterator.remove();
+            }
         }
 
-        System.out.println(rooms);
+        rooms.stream()
+                .forEach(r -> System.out.println(r.getName()));
 
     }
 }
