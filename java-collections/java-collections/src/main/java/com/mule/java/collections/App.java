@@ -27,21 +27,11 @@ public class App
         // we "start" a pipeline that will process the collection
         rooms.stream()
                 // filter will be used to decide if an element will continue through the flow
-                .filter(new Predicate<Room>() {
-                    @Override
-                    public boolean test(Room room) {
-                        System.out.format("Testing %s with result %b%n", room.getName(), room.isPetFriendly());
-                        return room.isPetFriendly();
-                    }
-                })
+                .filter(room -> room.isPetFriendly()) //alternative 1
+                .filter(Room::isPetFriendly) //alternative 2
                 // for each is a terminal operation
                 // a terminal operation is either going to return a result or modify the elements that are streamed
-                .forEach(new Consumer<Room>() {
-                    @Override
-                    public void accept(Room room) {
-                        System.out.println(room.getName());
-                    }
-                });
+                .forEach(room -> System.out.println(room.getName()));
 
     }
 }
