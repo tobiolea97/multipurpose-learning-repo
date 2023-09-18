@@ -17,6 +17,8 @@ public class ApplicationConfig {
     private String greeting;
     @Value("${app.name}")
     private String name;
+    @Value("#{new Boolean(environment['spring.profiles.active']!='dev')}")
+    private boolean is24;
 
     @Autowired
     private GreetingService greetingService;
@@ -25,7 +27,7 @@ public class ApplicationConfig {
 
     @Bean
     public TimeService timeService() {
-        return new TimeService(true);
+        return new TimeService(is24);
     }
 
     @Bean
