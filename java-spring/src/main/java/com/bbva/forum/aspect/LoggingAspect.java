@@ -1,10 +1,8 @@
 package com.bbva.forum.aspect;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -21,10 +19,16 @@ public class LoggingAspect {
     @Pointcut("@annotation(Loggable)")
     public void executeLogging() {}
 
-    @AfterReturning(value = "executeLogging()", returning = "returnValue")
-    public void logMethodCall(JoinPoint joinPoint, Object returnValue) {
+    @Around(value = "executeLogging()")
+    public Object logMethodCall(ProceedingJoinPoint joinPoint) throws Throwable {
+        long startTime = System.currentTimeMillis();
+
+        Object returnValue = joinPoint.proceed();
+        long totalTime = System.currentTimeMillis() - startTime;
+
         StringBuilder message = new StringBuilder("Mehtod: ");
         message.append(joinPoint.getSignature().getName());
+        message.append(" totalTime: ").append(totalTime).append("ms");
         Object[] args = joinPoint.getArgs();
         if(null!=args && args.length > 0) {
             message.append(" args =[ | ");
@@ -42,6 +46,7 @@ public class LoggingAspect {
                     .append(returnValue.toString());
         }
         LOGGER.info(message.toString());
+        return return
     }
 
 
