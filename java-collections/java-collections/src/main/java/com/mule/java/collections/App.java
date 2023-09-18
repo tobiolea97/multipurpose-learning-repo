@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * Hello world!
@@ -22,38 +24,24 @@ public class App
         oxford.setPetFriendly(true);
         victoria.setPetFriendly(true);
 
-        // this will throw a ConcurrentModificationException
-        /*
-        for(Room room : rooms) {
-            if(room.isPetFriendly()) {
-                rooms.remove(room);
-            }
-        }
-        */
-
-        // this is one approach we could take if we want to remove elements from a collection
-        /*
-        Collection<Room> removeRooms = new ArrayList<>();
-        for(Room room : rooms) {
-            if(room.isPetFriendly()) {
-                removeRooms.add(room);
-            }
-        }
-        rooms.removeAll(removeRooms);
-        */
-
-        // this is another approach
-        Iterator<Room> iterator = rooms.iterator();
-        Collection<Room> removeRooms = new ArrayList<>();
-        while (iterator.hasNext()) {
-            Room room = iterator.next();
-            if(room.isPetFriendly()) {
-                iterator.remove();
-            }
-        }
-
+        // we "start" a pipeline that will process the collection
         rooms.stream()
-                .forEach(r -> System.out.println(r.getName()));
+                // filter will be used to decide if an element will continue through the flow
+                .filter(new Predicate<Room>() {
+                    @Override
+                    public boolean test(Room room) {
+                        System.out.format("Testing %s with result %b%n", room.getName(), room.isPetFriendly());
+                        return room.isPetFriendly();
+                    }
+                })
+                // for each is a terminal operation
+                // a terminal operation is either going to return a result or modify the elements that are streamed
+                .forEach(new Consumer<Room>() {
+                    @Override
+                    public void accept(Room room) {
+                        System.out.println(room.getName());
+                    }
+                });
 
     }
 }
