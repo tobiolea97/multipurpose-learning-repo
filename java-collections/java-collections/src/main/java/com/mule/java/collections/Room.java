@@ -1,6 +1,6 @@
 package com.mule.java.collections;
 
-public class Room {
+public class Room implements Comparable<Room>{
 
     private String name;
 
@@ -78,8 +78,6 @@ public class Room {
     @Override
     public boolean equals(Object obj) {
 
-        System.out.format("Comparing %s with %s%n", this.name, ((Room)obj).name);
-
         if (this == obj)
             return true;
         if (obj == null)
@@ -97,6 +95,14 @@ public class Room {
         return true;
     }
 
-
+    @Override
+    public int compareTo(Room o) {
+        int result = this.getName().compareTo(o.getName());
+        return result != 0 ? result : this.getType().compareTo(o.getType());
+    }
 
 }
+
+
+
+
