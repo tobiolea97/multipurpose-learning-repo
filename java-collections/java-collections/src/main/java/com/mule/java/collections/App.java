@@ -9,40 +9,28 @@ import java.util.stream.Collectors;
  * Hello world!
  *
  */
-public class App 
-{
+public class App {
+
     public static void main(String[] args) {
 
-        Deque<String> messageStack = new ArrayDeque<>();
-        messageStack.addFirst("Message 1");
-        messageStack.push("Message 2");
-        messageStack.push("Message 3");
-        messageStack.push("Message 4");
+        //RoomWithBadKey piccadilly = new RoomWithBadKey("Piccadilly", "Guest Room", 3, 125.00);
+        //RoomWithBadKey oxford = new RoomWithBadKey("Oxford", "Suite", 5, 225.0);
+        Room piccadilly = new Room("Piccadilly", "Guest Room", 3, 125.00);
+        Room oxford = new Room("Oxford", "Suite", 5, 225.0);
+        Guest john = new Guest("John", "Doe", false);
+        Guest maria = new Guest("Maria", "Doe", true);
 
-        print(messageStack);
+        //Map<RoomWithBadKey,Guest> assignments = new HashMap<>();
+        Map<Room,Guest> assignments = new HashMap<>();
+        assignments.put(oxford,maria);
+        assignments.put(piccadilly,john);
 
-        System.out.println(messageStack.pop());
-        System.out.println(messageStack.pop());
-        print(messageStack);
-        messageStack.push("Message 5");
-        System.out.println(messageStack.peek());
+        Guest guest = assignments.put(piccadilly, assignments.remove(oxford));
+        assignments.putIfAbsent(oxford, guest);
 
+        System.out.println("Oxford: " + assignments.get(new Room("Oxford","Suite",5,225.0)));
+        System.out.println("Picadilly: " + assignments.get(piccadilly));
 
-        print(messageStack);
-
-
-    }
-
-    public static void print(Deque<String> deque) {
-
-        System.out.format("%n--Deque Contents--%n");
-
-        int x = 0;
-        for(String msg : deque) {
-            System.out.format("%x: %s %s %n", x++, msg, x == 1 ? "(Top)":"");
-        }
-
-        System.out.println("");
 
     }
 
