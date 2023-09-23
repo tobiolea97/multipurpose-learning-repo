@@ -13,29 +13,17 @@ public class App
 {
     public static void main(String[] args) {
 
-        Room piccadilly = new Room("Piccadilly", "Guest Room", 3, 125.00);
-        Room oxford = new Room("Oxford", "Suite", 5, 225.0);
-        Room oxfordDuplicate = new Room("Oxford", "Suite", 5, 225.0);
-        Room victoria = new Room("Victoria", "Suite", 5, 225.00);
+        List<Integer> numbers = Arrays.asList(500, 1500, 2500, 1000, 3000, 2000);
 
-        Set<Room> otherRooms = Set.of(piccadilly,oxford);
-        //otherRooms.add(victoria); // this breaks the code because Set.of() creates an unchangable object
+        NavigableSet<Integer> numberTree = new TreeSet<>(numbers);
 
-        //Set<Room> rooms = new LinkedHashSet<>(); // LinkedHashSet keeps the order of insertion
-        Set<Room> rooms = new HashSet<>(); // HashSet doesn't keep the order of insertion
-        rooms.add(piccadilly);
-        rooms.add(oxford);
-        rooms.add(oxford);
-        rooms.add(oxfordDuplicate);
-
-
-        Set<Room> moreRooms = Set.copyOf(rooms);
-
-        moreRooms.stream()
-                .map(r -> r.getName())
+        numberTree
+                //.descendingSet()
+                .headSet(1750)
+                .tailSet(750)
+                .subSet(1499,1501)
+                .stream()
                 .forEach(System.out::println);
-
-
 
     }
 }
