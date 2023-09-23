@@ -1,6 +1,12 @@
 package com.mule.java.collections;
 
+import java.util.Comparator;
+
 public class Room implements Comparable<Room>{
+
+    public static Comparator<Room> RATE_COMPARATOR = Comparator.comparing(Room::getRate)
+            .thenComparing(Room::getName)
+            .thenComparing(Room::getType);
 
     private String name;
 
