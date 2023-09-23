@@ -18,27 +18,15 @@ public class App
         Guest sonia = new Guest("Sonia", "Doe", true); //loyalty program
         Guest siri = new Guest("Siri", "Doe", true); //loyalty program
 
-        //Queue<Guest> checkinQueue = new ArrayDeque<>();
-        //Guest guest = checkinQueue.remove(); // this throws a NoSuchElement exception
-        //Guest guest = checkinQueue.poll(); // this works
-        //System.out.println(guest);
+        Comparator<Guest> programComp =
+                Comparator.comparing(Guest::isLoyaltyProgramMember).reversed();
 
-        Queue<Guest> checkinQueue = new ArrayDeque<>();
+        Queue<Guest> checkinQueue = new PriorityQueue<>(programComp);
         checkinQueue.offer(john);
         checkinQueue.offer(bob);
         checkinQueue.offer(sonia);
         checkinQueue.offer(siri);
         print(checkinQueue);
-
-        Guest guest = checkinQueue.poll(); // poll retrieves and removes the element at the head of the queue
-        //Guest guest = checkinQueue.remove(); // equivalent that throws an exception
-        print(checkinQueue);
-        System.out.println(guest);
-
-        Guest guest1 = checkinQueue.peek(); // peek only retrieves the element at the head of the queue
-        //Guest guest1 = checkinQueue.element(); // equivalent that throws exception
-        print(checkinQueue);
-        System.out.println(guest);
 
     }
 
