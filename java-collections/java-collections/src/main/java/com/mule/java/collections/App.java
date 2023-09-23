@@ -14,35 +14,44 @@ public class App
     public static void main(String[] args) {
 
         Guest john = new Guest("John", "Doe", false);
-        Guest maria = new Guest("Maria", "Doe", false);
-        Guest sonia = new Guest("Sonia", "Doe", true);
-        Guest siri = new Guest("Siri", "Doe", true);
+        Guest bob = new Guest("Bob", "Doe", false);
+        Guest sonia = new Guest("Sonia", "Doe", true); //loyalty program
+        Guest siri = new Guest("Siri", "Doe", true); //loyalty program
 
-        List<Guest> checkinList = new ArrayList<>(100); // 100 inicial capacity
-        checkinList.add(john);
-        checkinList.add(maria);
-        print(checkinList);
+        //Queue<Guest> checkinQueue = new ArrayDeque<>();
+        //Guest guest = checkinQueue.remove(); // this throws a NoSuchElement exception
+        //Guest guest = checkinQueue.poll(); // this works
+        //System.out.println(guest);
 
-        checkinList.add(0,siri);
-        checkinList.get(2).setLoyaltyProgramMember(true);
+        Queue<Guest> checkinQueue = new ArrayDeque<>();
+        checkinQueue.offer(john);
+        checkinQueue.offer(bob);
+        checkinQueue.offer(sonia);
+        checkinQueue.offer(siri);
+        print(checkinQueue);
 
-        checkinList.addAll(1, List.of(maria, siri));  // insert the list of the second parameter in the index of the first parameter
-                                                            // following elements are moved to the right
+        Guest guest = checkinQueue.poll(); // poll retrieves and removes the element at the head of the queue
+        //Guest guest = checkinQueue.remove(); // equivalent that throws an exception
+        print(checkinQueue);
+        System.out.println(guest);
 
-        checkinList.remove(checkinList.size() - 1);
-
-        System.out.println("John is: " + checkinList.indexOf(john));
+        Guest guest1 = checkinQueue.peek(); // peek only retrieves the element at the head of the queue
+        //Guest guest1 = checkinQueue.element(); // equivalent that throws exception
+        print(checkinQueue);
+        System.out.println(guest);
 
     }
 
-    public static void print(List<Guest> list) {
+    public static void print(Queue<Guest> queue) {
 
-        System.out.format("%n--List Contents--%n");
+        System.out.format("%n--Queue Contents--%n");
 
-        for (int x = 0; x < list.size(); x++) {
-            Guest guest = list.get(x);
-            System.out.format("%x: %s %n", x, guest.toString());
+        int x = 0;
+        for(Guest guest : queue) {
+            System.out.format("%x: %s %s %n", x++, guest.toString(), x == 1 ? "(Head)":"");
         }
+
+        System.out.println("");
 
     }
 }
