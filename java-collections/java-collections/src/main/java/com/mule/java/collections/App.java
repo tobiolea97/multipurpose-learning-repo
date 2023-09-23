@@ -13,33 +13,37 @@ public class App
 {
     public static void main(String[] args) {
 
-        Guest john = new Guest("John", "Doe", false);
-        Guest bob = new Guest("Bob", "Doe", false);
-        Guest sonia = new Guest("Sonia", "Doe", true); //loyalty program
-        Guest siri = new Guest("Siri", "Doe", true); //loyalty program
+        Deque<String> messageStack = new ArrayDeque<>();
+        messageStack.addFirst("Message 1");
+        messageStack.push("Message 2");
+        messageStack.push("Message 3");
+        messageStack.push("Message 4");
 
-        Comparator<Guest> programComp =
-                Comparator.comparing(Guest::isLoyaltyProgramMember).reversed();
+        print(messageStack);
 
-        Queue<Guest> checkinQueue = new PriorityQueue<>(programComp);
-        checkinQueue.offer(john);
-        checkinQueue.offer(bob);
-        checkinQueue.offer(sonia);
-        checkinQueue.offer(siri);
-        print(checkinQueue);
+        System.out.println(messageStack.pop());
+        System.out.println(messageStack.pop());
+        print(messageStack);
+        messageStack.push("Message 5");
+        System.out.println(messageStack.peek());
+
+
+        print(messageStack);
+
 
     }
 
-    public static void print(Queue<Guest> queue) {
+    public static void print(Deque<String> deque) {
 
-        System.out.format("%n--Queue Contents--%n");
+        System.out.format("%n--Deque Contents--%n");
 
         int x = 0;
-        for(Guest guest : queue) {
-            System.out.format("%x: %s %s %n", x++, guest.toString(), x == 1 ? "(Head)":"");
+        for(String msg : deque) {
+            System.out.format("%x: %s %s %n", x++, msg, x == 1 ? "(Top)":"");
         }
 
         System.out.println("");
 
     }
+
 }
