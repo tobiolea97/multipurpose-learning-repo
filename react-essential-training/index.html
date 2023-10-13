@@ -10,10 +10,16 @@
       <div id="root"></div>
       
       <script type="text/javascript">
-          ReactDOM.render(
-              React.createElement("h1", null, "Getting Started!"),
-              document.getElementById("root")
-          );
+        let heading = React.createElement(
+          "h1",
+          { style: { color: "blue" } },
+          "Heyyyy Everyone!"
+        );
+  
+        ReactDOM.render(
+          heading,
+          document.getElementById("root")
+        );
       </script>
   </body>
 </html>
