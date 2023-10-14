@@ -20,7 +20,7 @@ function App() {
   ).sort((a,b) => {
     let order = (orderBy === 'asc') ? 1 : -1;
     return (
-      a[sortBy].toLowerCase() < b[sortBy].toLowerCase ? -1 * order : 1 * order
+      a[sortBy].toLowerCase() < b[sortBy].toLowerCase() ? -1 * order : 1 * order
     )
   })
 
