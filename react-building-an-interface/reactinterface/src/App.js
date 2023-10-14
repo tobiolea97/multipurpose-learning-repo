@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
-import { BiCalendar, BiTrash } from "react-icons/bi"
+import { BiCalendar } from "react-icons/bi"
 import Search from "./components/Search"
 import AddAppointment from "./components/AddAppointment"
 import AppointmentInfo from "./components/AppointmentInfo"
@@ -30,7 +30,13 @@ let[appointmentList, setAppointmentList] = useState([]);
         <ul className="divide-y divide-gray-200">
           {
             appointmentList.map(appointment => (
-                <AppointmentInfo key={appointment.id} appointment={appointment}/>
+                <AppointmentInfo key={appointment.id}
+                  appointment={appointment}
+                  onDeleteAppointment={
+                    appointmentId => 
+                      setAppointmentList(appointmentList.filter(appointment => appointment.id !== appointmentId)
+                    )
+                  } />
               )
             )
           }
