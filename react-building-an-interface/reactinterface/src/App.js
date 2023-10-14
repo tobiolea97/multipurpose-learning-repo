@@ -13,8 +13,8 @@ let[appointmentList, setAppointmentList] = useState([]);
       .then(response => response.json())
       .then(data => {
         setAppointmentList(data)
+      });
       }, [])
-  })
 
   useEffect(() => {
     fetchData()
