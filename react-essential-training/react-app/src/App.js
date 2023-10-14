@@ -1,41 +1,20 @@
 import "./App.css";
-import { useState } from "react";
-
-function useInput(initialValue) {
-  const [value, setValue] =
-    useState(initialValue);
-  return [
-    {
-      value,
-      onChange: (e) => setValue(e.target.value)
-    },
-    () => setValue(initialValue)
-  ];
-}
+import { useState, useEffect } from "react";
 
 function App() {
-  const [titleProps, resetTitle] = useInput("");
-  const [colorProps, resetColor] =
-    useState("#000000");
-  const submit = (e) => {
-    e.preventDefault();
-    alert(
-      `${titleProps.value}, ${colorProps.value}`
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch(
+      `https://api.github.com/users/moonhighway`
+    )
+      .then((response) => response.json())
+      .then(setData);
+  }, []);
+  if (data)
+    return (
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     );
-    resetTitle();
-    resetColor();
-  };
-  return (
-    <form onSubmit={submit}>
-      <input
-        {...titleProps}
-        type="text"
-        placeholder="color title..."
-      />
-      <input {...colorProps} type="color" />
-      <button>ADD</button>
-    </form>
-  );
+  return <h1>Data</h1>;
 }
 
 export default App;
