@@ -5,12 +5,12 @@ import articles from './article-content';
 
 const ArticlePage = () => {
     const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
+    const { articleId } = useParams();
 
     useEffect(() => {
-        setArticleInfo({ upvotes: 3, comments: [] });
-    });
+        setArticleInfo({ upvotes: Math.ceil(Math.random() * 10), comments: [] });
+    }, []);
 
-    const { articleId } = useParams();
     const article = articles.find(article => article.name === articleId);
 
     if (!article) {
