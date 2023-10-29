@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Activity } from "../models/activity";
 import { Header } from "semantic-ui-react";
 import List from "semantic-ui-react/dist/commonjs/elements/List";
+import NavBar from "./NavBar";
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -16,15 +17,18 @@ function App() {
       city: "London",
       venue: "Pub",
     };
-    const activities = [activity];
+    const activities = [];
+    activities.push(activity);
+    activities.push(activity);
+    activities.push(activity);
     setActivities(activities);
   }, []);
 
   return (
     <div>
-      <Header as = 'h2' icon = 'users' content = 'Reactivities' />
+      <NavBar />
       <List>
-        {activities.map((activity: Activity) => (
+        {activities.map((activity) => (
           <List.Item key={activity.id}>
             {activity.title}
           </List.Item>
