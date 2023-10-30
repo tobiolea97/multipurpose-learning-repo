@@ -4,9 +4,10 @@ import { Activity } from '../../../app/models/activity';
 
 interface Props {
     activity: Activity | undefined;
+    closeForm: () => void;
 }
 
-export default function ActivityForm({ activity: selectedActivity}: Props) {
+export default function ActivityForm({ activity: selectedActivity, closeForm }: Props) {
 
     const initialState = selectedActivity ?? {
         id: '',
@@ -39,7 +40,7 @@ export default function ActivityForm({ activity: selectedActivity}: Props) {
                 <Form.Input placeholder='City' value={activity.city} name='city' onChange={handleInputChange} />
                 <Form.Input placeholder='Venue' value={activity.venue} name='venue' onChange={handleInputChange} />
                 <Button floated='right' positive type='submit' content='Submit' />
-                <Button floated='right' type='button' content='Cancel' />
+                <Button onClick={closeForm} floated='right' type='button' content='Cancel' />
             </Form>
         </Segment>
     )
