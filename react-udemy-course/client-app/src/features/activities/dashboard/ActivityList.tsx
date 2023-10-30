@@ -13,7 +13,7 @@ export default function ActivityList({activities, selectActivity, deleteActivity
     const [target, setTarget] = useState('');
 
     function handleDeleteActivity(e: SyntheticEvent<HTMLButtonElement>, id: string) {
-        setTarget(e.currentTarget.name);
+        setTarget(id);
         deleteActivity(id)
     }
 
@@ -27,12 +27,14 @@ export default function ActivityList({activities, selectActivity, deleteActivity
                             <Item.Meta>{activity.date}</Item.Meta>
                             <Item.Description>
                                 <div>{activity.description}</div>
-                                <div>{activity.city}, {activity.venue}</div>
+                                <div>{activity.city}, {activity.venue}, {activity.id}</div>
                             </Item.Description>
                             <Item.Extra>
                                 <Button onClick={() => selectActivity(activity.id)} floated='right' content='View' color='blue'/>
-                                <Button loading={submitting && target === activity.id}
-                                        name={activity.id} floated='right' content='Delete'
+                                <Button name={activity.id} 
+                                        loading={submitting && target === activity.id}
+                                        floated='right'
+                                        content='Delete'
                                         color='red'
                                         onClick={(e) => handleDeleteActivity(e, activity.id)}/>
                                 <Label basic content={activity.category}/>
