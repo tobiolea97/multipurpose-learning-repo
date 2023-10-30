@@ -5,15 +5,17 @@ import NavBar from "./NavBar";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 import { v4 as uuid } from 'uuid';
 import agent from "../api/agent";
+import LoadingComponent from './LoadingComponent';
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
   const [editMode, setEditMode] = useState(false);
 
 
   useEffect(() => {
-    /*agent.Activities.list()
+    agent.Activities.list()
       .then(response => {
         let activities: Activity[] = [];
         response.forEach(activity => {
@@ -22,31 +24,8 @@ function App() {
         })
         setActivities(activities);
         setLoading(false);
-      })*/
-
-    const activities = [];
-    let activity: Activity = {
-      id: "1",
-      title: "Past Activity 1",
-      date: "2020-01-01",
-      category: "drinks",
-      description: "Activity 1",
-      city: "London",
-      venue: "Pub",
-    };
-    activities.push(activity);
-    activity = {
-      id: "2",
-      title: "Past Activity 2",
-      date: "2020-01-01",
-      category: "drinks",
-      description: "Activity 1",
-      city: "London",
-      venue: "Pub",
-    };
-    activities.push(activity);
-    setActivities(activities);
-  }, []);
+      })
+  }, [])
 
   function handleSelectActivity(id: string) {
     setSelectedActivity(activities.find(x => x.id === id));
@@ -76,6 +55,8 @@ function App() {
     setEditMode(false);
     setSelectedActivity(activity);
   }
+
+  if (loading) return <LoadingComponent content='Loading app...' />
 
   return (
     <>
