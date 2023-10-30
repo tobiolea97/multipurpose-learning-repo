@@ -4,6 +4,7 @@ import { Container} from "semantic-ui-react";
 import NavBar from "./NavBar";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 import { v4 as uuid } from 'uuid';
+import agent from "../api/agent";
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -12,6 +13,10 @@ function App() {
 
 
   useEffect(() => {
+    /*agent.Activities.list().then(response => {
+      setActivities(response);
+    })*/
+
     const activities = [];
     let activity: Activity = {
       id: "1",
