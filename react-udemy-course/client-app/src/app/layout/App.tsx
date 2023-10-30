@@ -11,7 +11,8 @@ function App() {
 
 
   useEffect(() => {
-    const activity: Activity = {
+    const activities = [];
+    let activity: Activity = {
       id: "1",
       title: "Past Activity 1",
       date: "2020-01-01",
@@ -20,9 +21,16 @@ function App() {
       city: "London",
       venue: "Pub",
     };
-    const activities = [];
     activities.push(activity);
-    activities.push(activity);
+    activity = {
+      id: "2",
+      title: "Past Activity 2",
+      date: "2020-01-01",
+      category: "drinks",
+      description: "Activity 1",
+      city: "London",
+      venue: "Pub",
+    };
     activities.push(activity);
     setActivities(activities);
   }, []);
@@ -44,6 +52,14 @@ function App() {
     setEditMode(false);
   }
 
+  function handleCreateOrEditActivity(activity: Activity) {
+    activity.id
+      ? setActivities([...activities.filter(x => x.id !== activity.id), activity])
+      : setActivities([...activities, activity]);
+    setEditMode(false);
+    setSelectedActivity(activity);
+  }
+
   return (
     <>
       <NavBar openForm={handleFormOpen} />
@@ -56,6 +72,7 @@ function App() {
           editMode={editMode}
           openForm={handleFormOpen}
           closeForm={handleFormClose}
+          createOrEdit={handleCreateOrEditActivity}
         />
       </Container>
     </>
