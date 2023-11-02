@@ -8,7 +8,7 @@ export default class ActivityStore {
     selectedActivity?: Activity = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
     constructor() {
         makeAutoObservable(this)
@@ -20,11 +20,11 @@ export default class ActivityStore {
     }
 
     loadActivities = async () => {
+        this.setLoadingInitial(true);
         try {
             const activities = await agent.Activities.list();
             activities.forEach(activity => {
-                activity.date = activity.date.split('T')[0];
-                this.activityRegistry.set(activity.id, activity);
+                this.setActivity(activity);
             })
             this.setLoadingInitial(false);
         } catch (error) {
@@ -68,6 +68,7 @@ export default class ActivityStore {
     }
 
     createActivity = async (activity: Activity) => {
+        this.loading = true;
         activity.id = uuid();
         try {
             await agent.Activities.create(activity);
