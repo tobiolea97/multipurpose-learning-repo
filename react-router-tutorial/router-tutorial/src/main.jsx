@@ -7,6 +7,7 @@ import ErrorPage from "./error-page";
 import Contact, {loader as contactLoader,} from "./routes/contact";
 import EditContact, { action as editAction} from "./routes/edit";
 import { action as destroyAction } from "./routes/destroy";
+import Index from "./routes/index";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
         (You might note we reused the contactLoader for this route. This is only because we're being lazy in the tutorial.
         There is no reason to attempt to share loaders among routes, they usually have their own
       */
+      { index: true, element: <Index /> },
       {path: "contacts/:contactId",         element: <Contact />,         loader: contactLoader,},
       {path: "contacts/:contactId/edit",    element: <EditContact />,     loader: contactLoader,      action: editAction,},
       {path: "contacts/:contactId/destroy", action: destroyAction, errorElement: <div>Oops! There was an error.</div>,},
