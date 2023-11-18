@@ -5,6 +5,7 @@ import './index.css'
 import Root, { loader as rootLoader, action as rootAction, } from "./routes/root";
 import ErrorPage from "./error-page";
 import Contact, {loader as contactLoader,} from "./routes/contact";
+import EditContact, { action as editAction} from "./routes/edit";
 
 const router = createBrowserRouter([
   {
@@ -14,11 +15,12 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children: [
-      {
-        path: "contacts/:contactId",
-        element: <Contact />,
-        loader: contactLoader,
-      },
+      /*
+        (You might note we reused the contactLoader for this route. This is only because we're being lazy in the tutorial.
+        There is no reason to attempt to share loaders among routes, they usually have their own
+      */
+      {path: "contacts/:contactId",       element: <Contact />,         loader: contactLoader,},
+      {path: "contacts/:contactId/edit",  element: <EditContact />,     loader: contactLoader,      action: editAction,},
     ],
   },
 ]);
