@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       */
       {path: "contacts/:contactId",         element: <Contact />,         loader: contactLoader,},
       {path: "contacts/:contactId/edit",    element: <EditContact />,     loader: contactLoader,      action: editAction,},
-      {path: "contacts/:contactId/destroy", action: destroyAction,},
+      {path: "contacts/:contactId/destroy", action: destroyAction, errorElement: <div>Oops! There was an error.</div>,},
     ],
   },
 ]);
