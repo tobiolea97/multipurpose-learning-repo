@@ -1,9 +1,9 @@
 import github from "./db.js";
 import { useEffect, useState, useCallback } from "react";
-import query from "./Query";
-import RepoInfo from "./RepoInfo";
-import SearchBox from "./SearchBox";
-import NavButtons from "./NavButtons";
+import query from "./Query.js";
+import RepoInfo from "./RepoInfo.js";
+import SearchBox from "./SearchBox.js";
+import NavButtons from "./NavButtons.js";
 
 function App() {
   let [userName, setUserName] = useState("");
