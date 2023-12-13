@@ -1,0 +1,46 @@
+mutation CreateRepo {
+  createRepository(input: {
+    name: "repo-created-from-graphql",
+    visibility: PUBLIC,
+    description: "This repo was created from a GraphQL mutation"
+  }) {
+    repository {
+      name
+      url
+      description
+      visibility
+    }
+  }
+}
+
+
+mutation CrateIssue {
+  createIssue(input: {
+    repositoryId: "MDEwOlJlcG9zaXRvcnkyODMxOTM1NDk",
+    title: "This is a new issue",
+    body: "This issue was created from a GraphQL mutation"
+  }) {
+    issue {
+      number
+      title
+      url
+    }
+  }
+}
+
+
+mutation StarRepo {
+  addStar(input: { starrableId: "MDEwOlJlcG9zaXRvcnkyODMxOTM1NDk" }) {
+    starrable {
+      stargazerCount
+    }
+  }
+}
+
+mutation UnstarRepo {
+  removeStar(input: { starrableId: "MDEwOlJlcG9zaXRvcnkyODMxOTM1NDk" }) {
+    starrable {
+      stargazerCount
+    }
+  }
+}
