@@ -46,4 +46,14 @@ Objects that are passed around but never actually used. They are used to fill pa
 
 
 
+## Funcional tests
 
+- Test the application as a whole.
+- They are slower than unit tests.
+- They are more complex than unit tests.
+- They are more expensive to maintain.
+- They are more expensive to run.
+
+#### Functional tests in Node
+
+Uses tools like Selenium, Supertest, Mocha, Chai, and Sinon.
