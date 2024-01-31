@@ -9,11 +9,13 @@ beforeAll(() => {
   jest.mock('../lib/knex', () => () => ({
     insert: mockInsert,
   }));
+  jest.mock('./', () => require('./reservations'));
   app = request(require('../app'));
 });
 
 afterAll(() => {
   jest.unmock('morgan');
+  jest.unmock('./');
 });
 
 describe('GET', () => {
@@ -48,7 +50,7 @@ describe('POST', () => {
       .send({
         date: '2017/06/10',
         time: '06:02 AM',
-        party: 4,
+        party: 8,
         name: 'Family',
         email: 'username@example.com'
       })
