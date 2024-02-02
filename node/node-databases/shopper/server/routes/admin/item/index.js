@@ -72,7 +72,7 @@ module.exports = () => {
   // Delete item
   router.get("/delete/:itemId", async (req, res) => {
     try {
-      await ItemService.remove({ _id: req.params.itemId });
+      await ItemService.remove(req.params.itemId);
     } catch (err) {
       // Error handling
       req.session.messages.push({
