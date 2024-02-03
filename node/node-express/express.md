@@ -113,3 +113,6 @@ This command will create a new directory named myapp in the current working dire
 
     ```
 
+## Mocking data
+
+You can use mockaroo.com to generate fake data for your app.
