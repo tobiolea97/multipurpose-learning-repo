@@ -10,9 +10,19 @@ app.use(express.static('public'));
 //Using the images folder at the route /images
 app.use('/images', express.static('images'));
 
+//Using express.json and express.urlencoded
+// app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+
 //GET
 app.get('/', (request, response) => {
     response.json(data);
+})
+
+//POST - express.json and express.urlencoded
+app.post( '/item', (request, response) => {
+    console.log(request.body);
+    response.send(request.body)
 })
 
 //GET - download method
@@ -35,21 +45,6 @@ app.route('/class')
     response.send('Update class info')
 })
 
-//GET
-// app.get('/class', (request, response) => {
-//     response.send('Retrieve class info')
-// });
-
-//POST
-// app.post('/class', (request, response) => {
-//     response.send('Create class info')
-// });
-
-//PUT
-// app.put('/class', (request, response) => {
-//     response.send('Update class info')
-// })
-
 //GET with next()
 app.get('/next', (request, response, next) => {
    console.log("The response will be sent by the next function.")
@@ -61,9 +56,11 @@ app.get('/next', (request, response, next) => {
 
 //GET with Routing Parameters
 app.get('/class/:id', (request, response)=> {
+    //Middleware: Acess the routing parameters
     const studentId = Number(request.params.id);
     
     const student = data.filter((student) => student.id === studentId);
+    //Everything above this line is middleware
     response.send(student)
 })
 
