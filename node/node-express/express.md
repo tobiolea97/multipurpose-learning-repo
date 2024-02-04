@@ -149,3 +149,15 @@ Routing refers to how an application’s endpoints (URIs) respond to client requ
     app.get('/example/c', [cb0, cb1, cb2]);
     ```
 
+## Response methods
+
+- res.json(): Send a JSON response.
+- res.send(): Send a response of various
+- res.download(): Prompt a file to be downloaded.
+- res.redirect(): Redirect a request.
+- res.end(): End the response process.
+- res.jsonp(): Send a JSON response with JSONP support.
+- res.render(): Render a view template.
+- res.sendFile(): Send a file as an octet stream.
+- res.sendStatus(): Set the response status code and send its string representation as the response body.
+
