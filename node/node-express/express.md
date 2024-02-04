@@ -120,3 +120,32 @@ You can use mockaroo.com to generate fake data for your app.
 ## Routing
 
 Routing refers to how an application’s endpoints (URIs) respond to client requests. You define routing using methods of the Express app object that correspond to HTTP methods; for example, app.get() to handle GET requests and app.post() to handle POST requests.
+
+- Routes parameters: You can define routes with parameters, which will capture the values in the URL and pass them to the request object. Example:
+
+    ```javascript
+    app.get('/users/:id', (req, res) => {
+        res.send(`User ID: ${req.params.id}`);
+    });
+    ```
+
+- Route handlers: You can define multiple route handlers for a single route. Example:
+
+    ```javascript
+    const cb0 = (req, res, next) => {
+        console.log('CB0');
+        next();
+    };
+
+    const cb1 = (req, res, next) => {
+        console.log('CB1');
+        next();
+    };
+
+    const cb2 = (req, res) => {
+        res.send('Hello from C!');
+    };
+
+    app.get('/example/c', [cb0, cb1, cb2]);
+    ```
+
