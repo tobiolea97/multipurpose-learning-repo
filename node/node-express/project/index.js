@@ -39,7 +39,7 @@ app.get('/redirect', (request, response) => {
 app.route('/class')
 .get((request, response) => {
     // response.send('Retrieve class info')
-    throw new Error();
+    // throw new Error();
 }).post((request, response) => {
     response.send('Create class info')
 }).put((request, response) => {
