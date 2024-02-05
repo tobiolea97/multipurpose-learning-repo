@@ -11,10 +11,6 @@ module.exports = (params) => {
   // Destructuring assignment
   const { speakers } = params;
 
-  router.get('/md', (req, res) => {
-    return res.render('index', { headline: 'Learning Express' });
-  });
-
   // Now let's define the index route and mount it on slash.
   router.get('/', async (req, res) => {
     const speakerslist = await speakers.getListShort();

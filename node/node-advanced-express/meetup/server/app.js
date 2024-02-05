@@ -2,37 +2,17 @@ const express = require('express');
 const path = require('path');
 const createError = require('http-errors');
 const bodyParser = require('body-parser');
-const marked = require('marked');
-const util = require('util');
-const fs = require('fs');
 const routes = require('./routes');
 const SpeakerService = require('./services/SpeakerService');
 const FeedbackService = require('./services/FeedbackService');
-
-const fsreadfile = util.promisify(fs.readFile);
 
 module.exports = (config) => {
   const app = express();
   const speakers = new SpeakerService(config.data.speakers);
   const feedback = new FeedbackService(config.data.feedback);
 
-  app.engine('md', async (filePath, options, callback) => {
-    try {
-      const content = await fsreadfile(filePath);
-      const replaces = content.toString().replace('{headline}', options.headline);
-      return callback(null, marked(replaces));
-    } catch (err) {
-      return callback(err);
-    }
-  });
-
-  app.set('view engine', 'md');
-  app.set('views', path.join(__dirname, './mdviews'));
-
-  /*
   app.set('view engine', 'pug');
   app.set('views', path.join(__dirname, './views'));
-  */
 
   app.locals.title = config.sitename;
 
