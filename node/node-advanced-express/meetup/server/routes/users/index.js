@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const UserModel = require('../../models/UserModel');
+const middlewares = require('../middlewares');
 
 const router = express.Router();
 
@@ -22,7 +23,8 @@ module.exports = () => {
   });
 
   router.get('/registration', redirectIfLoggedIn, (req, res) => res.render('users/registration', { success: req.query.success }));
-  router.post('/registration', async (req, res, next) => {
+
+  router.post('/registration', middlewares.upload.single('avatar'), async (req, res, next) => {
     try {
       const user = new UserModel({
         username: req.body.username,
