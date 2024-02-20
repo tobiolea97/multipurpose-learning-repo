@@ -1,4 +1,5 @@
 package com.linkedin.generics;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,6 @@ public class Rules {
 
         List<String> languages = new ArrayList<>();
         languages.add("English");
-        // integers = languages;
+       // integers = languages;
     }
 }

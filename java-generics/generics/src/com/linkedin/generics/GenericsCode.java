@@ -1,13 +1,11 @@
 package com.linkedin.generics;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class GenericsCode {
     public static void main(String[] args) {
-        List<String> languages = new ArrayList<String>();
+        List<String> languages = new ArrayList<>();
         languages.add("English");
         languages.add("Swedish");
         processLanguages(languages);
