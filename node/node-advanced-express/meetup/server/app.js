@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -15,6 +16,7 @@ const AvatarService = require('./services/AvatarService');
 
 module.exports = (config) => {
   const app = express();
+  app.use(helmet());
   app.use(compression());
   const speakers = new SpeakerService(config.data.speakers);
   const feedback = new FeedbackService(config.data.feedback);
@@ -31,6 +33,18 @@ module.exports = (config) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
 
+  if (app.get('env') === 'production'){
+    app.set('trust proxy', 'loopback');
+    app.use(session({
+      secret: 'another very secret 12345',
+      name: 'sessionId',
+      proxy: true,
+      cookie: {secure: true},
+      resave: true,
+      saveUninitialized: false,
+      store: new MongoStore({mongooseConnection: mongoose.connection}),
+    }));
+  } else {
   app.use(session({
     secret: 'very secret 12345',
     resave: true,
