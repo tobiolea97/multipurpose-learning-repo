@@ -17,6 +17,13 @@ body {
 
 /* HOME
 ------------------------------------*/
+.home {
+    background: url(../images/bg-home-office-studio.jpg) no-repeat;
+    background-size: cover;
+}
+.home .content-wrapper {
+    background: rgb(255 255 255 / 0.9);
+}
 
 
 /* RESUME
@@ -37,3 +44,7 @@ body {
 
 /* FOOTER
 ------------------------------------*/
+footer {
+    background: #222;
+    color: #d3d4d6;
+}
