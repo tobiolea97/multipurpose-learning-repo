@@ -45,6 +45,35 @@
 	background: hsl(0, 0%, 75%);
 }
 
+/* Sidebar switcher buttons */
+
+@media screen and (max-width: 40em) {
+    /* Hide switcher on small screens */
+    .sidebar-switcher {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 40em) {
+
+	.sidebar-switcher {
+		position: absolute;
+		right: 0;
+		padding: .4em 1em;
+		color: hsl(0, 0%, 40%);
+	}
+
+	.sidebar-switcher a {
+		color: hsl(0, 0%, 40%);
+		padding-left: .4em;
+	}
+
+	.sidebar-switcher a:hover,
+	.sidebar-switcher a:focus {
+		color: hsl(0, 0%, 20%);
+	}
+}
+
 /* Flexbox stuff */
 
 @media screen and (min-width: 40em) {
@@ -60,6 +89,7 @@
     
     .main-area {
         flex: 1 1 auto;
+        order: 1;
     }
     
     .post-content {
@@ -69,8 +99,9 @@
     
     .sidebar {
         flex: 0 0 12em;
+        order: 2;
     }
-    
+
 }
 
 
