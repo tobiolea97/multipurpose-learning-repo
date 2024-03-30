@@ -105,6 +105,7 @@
     .sidebar {
         flex: 0 0 12em;
         order: 2;
+        transition: padding .5s ease, flex .5s ease, color .2s ease-in .3s;
     }
     
     .sidebar-left {
@@ -115,9 +116,15 @@
         flex-direction: column;
     }
     
-    .hide {
+	.hide {
         flex: 0 0 0;
-        padding: 0;
+		padding: 0;
+        color: hsla(0, 0%, 0%, 0);
+        transition: color .2s ease, flex .5s ease .3s, padding .5s ease .3s;
+	}
+    
+    .hide a {
+        color: hsla(0, 0%, 0%, 0);
     }
 
 }
