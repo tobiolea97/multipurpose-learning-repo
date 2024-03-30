@@ -51,6 +51,7 @@ body {
     }
 
     .card {
+        display: flex;
         flex: 0 1 calc(50% - .5em);
         margin-bottom: 1em;
     }
