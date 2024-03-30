@@ -20,4 +20,20 @@
         };
     });
     
+    $('a.hide-sidebar-toggle').click(function() {
+        if (!$('.sidebar').hasClass('hide')){
+            $('.sidebar').addClass('hide');
+        } else {
+            $('.sidebar').removeClass('hide');  
+        };
+    });
+    
 })( jQuery );
+
+
+
+
+
+
+
+
