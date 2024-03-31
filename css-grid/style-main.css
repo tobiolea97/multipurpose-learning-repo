@@ -153,7 +153,9 @@ img {
 }
 
 
-/* Header */
+/*--------------------------------------------------------------
+Header:
+--------------------------------------------------------------*/
 
 .masthead {
 	padding: 0 1em;
@@ -161,6 +163,54 @@ img {
 	border-bottom: 1px solid hsl(0, 0%, 90%);
 }
 
+/*--------------------------------------------------------------
+Navigation:
+--------------------------------------------------------------*/
+.main-nav {
+	padding: 1em;
+	font-size: 1.1em;
+	color: white;
+    background-color: hsl(0, 0%, 10%);
+}
+
+.trigger {
+	display: none;
+	padding: .1em .5em;
+	color: white;
+	background: hsl(0, 0%, 10%);
+	border: none;
+	transform: rotate(90deg);
+}
+
+.trigger:focus,
+.trigger:hover {
+	outline: 2px dotted hsl(0, 0%, 10%);
+}
+
+.trigger:focus {
+	outline-color: white;
+}
+
+.main-nav ul {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.main-nav a {
+	display: block;
+	padding: .4em 1em;
+	color: white;
+	text-decoration: none;
+}
+
+.main-nav a:focus,
+.main-nav a:hover {
+	text-decoration: underline;
+}
 
 /*--------------------------------------------------------------
 Cards:
@@ -202,6 +252,41 @@ Cards:
 	background: hsl(0, 0%, 97%);
 }
 
+
+/*--------------------------------------------------------------
+Sidebar:
+--------------------------------------------------------------*/
+
+.twin {
+	padding: 2em;
+	background: #2185C5;
+	color: white;
+}
+
+.twin:last-of-type {
+	background: #FF7F66;
+}
+
+/*--------------------------------------------------------------
+Footer:
+--------------------------------------------------------------*/
+
+.colophon {
+	padding: 2em;
+	background: hsl(0, 0%, 10%);
+	color: white;
+	text-align: center;
+}
+
+.colophon a {
+	color: white;
+}
+
+.colophon a:hover,
+.colophon a:focus {
+	border-bottom: 1px solid white;
+}
+
 /*--------------------------------------------------------------
 CSS Grid layout for wider screens, when browser supports grid:
 --------------------------------------------------------------*/
@@ -225,6 +310,8 @@ CSS Grid layout for wider screens, when browser supports grid:
 		.cards a:hover {
 			outline: 1px solid hsl(0, 0%, 80%);
 		}
+
+
 	}
 
 	@media screen and (min-width: 60em) {
