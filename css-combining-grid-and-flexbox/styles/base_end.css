@@ -20,6 +20,7 @@ TABLE OF CONTENTS
       10a-ii. Navigation, Large screen
       10a-iii. Trips, Large screen
       10a-iv. CTA summaries, Large screen rules
+      10a-v. Team, Large screen rules
     10b. Media Query, (min-width: 1000px)
 
 */
@@ -568,6 +569,35 @@ nav .btn:hover {
 
   .cta h1 {
     margin-right: 1rem;
+  }
+
+/* ######### 10a-v. Team, Large screen rules ######### */
+  .team {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr .5fr;
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .team h1 {
+    order: 2;
+    grid-column: 2 / -1;
+    align-self: center;
+  }
+
+  .teamMembers {
+    order: 1;
+    grid-column: 1 / -1;
+  }
+
+  .team p {
+    border-right: solid 1px #dedede;
+    padding-right: 1rem;
+    order: 2;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
   }
 
 }
