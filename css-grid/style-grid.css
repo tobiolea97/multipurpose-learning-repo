@@ -1,30 +1,40 @@
 .site {
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
 	grid-template-rows: auto 1fr 3fr;
+	grid-template-areas:
+		"title title"
+		"main masthead"
+		"main sidebar"
+		"footer footer";
+}
+
+@media screen and (min-width: 600px) {
+	.site {
+		grid-template-columns: 2fr 1fr 1fr;
+		grid-template-areas:
+			"title title title"
+			"main masthead masthead"
+			"main sidebar footer";
+	}
 }
 
 .masthead {
-	grid-column: 2/4;
-	grid-row: 2/3;
+	grid-area: masthead;
 }
 
 .page-title {
-	grid-column: 1/4;
-	grid-row: 1/2;
+	grid-area: title;
 }
 
 .main-content {
-	grid-column: 1/2;
-	grid-row: 2/4;
+	grid-area: main;
 }
 
 .sidebar {
-	grid-column: 2/4;
-	grid-row: 3/4;
+	grid-area: sidebar;
 }
 
 .footer-content {
-	grid-column: 1/4;
-	grid-row: 4;
+	grid-area: footer;
 }
