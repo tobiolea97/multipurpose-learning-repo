@@ -16,7 +16,8 @@ TABLE OF CONTENTS
     9b. Connect
   10. Media Queries
     10a. Media Query, (min-width: 700px)
-      10a-i. hero
+      10a-i. Hero
+      10a-ii. Navigation, Large screen
     10b. Media Query, (min-width: 1000px)
 
 */
@@ -309,7 +310,57 @@ nav .btn:hover {
    grid-column: 3 / 6;
   }
 
+/* ######### 10a-ii. Navigation, Large screen rules ######### */
+  .navWrap {
+    display: grid;
+    grid-template-columns: 100px minmax(auto, 1100px);
+    justify-content: center;
+    height: auto;
+  }
+
+  .navToggleLabel {
+    display: none;
+  }
+
+  nav {
+    position: initial;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul li a {
+    border-bottom: none;;
+  }
+
+  nav ul li a:hover {
+    background: transparent;
+  }
+
+  nav::after, nav ul li:last-of-type::before {
+    display: none;
+    padding: initial;
+  }
+
+  nav .btn {
+    width: auto;
+    background: #13b1e7;
+    color: #fff;
+    letter-spacing: normal;
+    text-shadow: none;
+    box-shadow: none;
+  }
+
+  nav.btn:hover {
+    box-shadow: inset 0 0 5px #13b1e7;
+    background-color: #223054;
+  }
+
 }
+
 /* ############ 10b. Media Query, (min-width: 1000px) ############ */
 @media screen and (min-width: 1000px) {
 
