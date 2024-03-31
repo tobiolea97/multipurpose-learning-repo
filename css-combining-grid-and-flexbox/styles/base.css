@@ -21,6 +21,7 @@ TABLE OF CONTENTS
       10a-iii. Trips, Large screen
       10a-iv. CTA summaries, Large screen rules
       10a-v. Team, Large screen rules
+      10a-vi. Problem
     10b. Media Query, (min-width: 1000px)
 
 */
@@ -441,6 +442,34 @@ nav .btn:hover {
 
 
 /* ############ 7. Problem ############ */
+section.problem {
+  padding: 1rem;
+  margin: auto;
+}
+
+.problem h1 {
+  margin-left: 1rem;
+  color: #35b1e8;
+}
+
+.problem h1 ~ p {
+  border-left: solid 1px #dedede;
+  padding-left: 1rem;
+}
+
+.problem h3 {
+  margin: 1rem 0 0 1rem;
+  color: #223055;
+}
+
+.problem ul {
+  margin: 0 0 1rem 3rem;
+}
+
+.problem img {
+  margin: auto;
+  display: block;
+}
 
 /* ############ 7a. Problem > Action ############ */
 
@@ -576,18 +605,56 @@ nav .btn:hover {
     max-width: 1000px;
     margin: auto;
     padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr .5fr;
+    grid-template-rows: repeat(2, auto);
   }
 
   .team h1 {
+    order: 2;
+    grid-column: 2 / -1;
+    align-self: center;
   }
 
   .teamMembers {
+    order: 1;
+    grid-column: 1 / -1;
   }
 
   .team p {
     border-right: solid 1px #dedede;
     padding-right: 1rem;
+    order: 2;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
   }
+
+  /* ######### 10a-vi. Problem, Large screen rules ######### */
+
+  section.problem {
+    background: url(../images/problem1.png) no-repeat center left;
+    max-width: 1200px;
+  }
+
+  .problem h1 {
+    color: #233458;
+    padding-right: 1rem;
+    text-align: right;
+    text-shadow: 1px 1px 2px #fff;
+  }
+
+  .problem h1 ~ p, .problem h3, .problem ul {
+  }
+
+  .problem ul {
+    margin-left: 2rem;
+    padding-right: 1rem;
+  }
+
+  .problem img {
+    display: none;
+  }
+
 
 }
 
