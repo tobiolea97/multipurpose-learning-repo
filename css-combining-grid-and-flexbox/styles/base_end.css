@@ -23,62 +23,62 @@ TABLE OF CONTENTS
 
 /* ############ 1. Global Styles ############ */
  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-     display: block;
+   display: block;
 }
 
  * {
-     padding: 0;
-     margin: 0;
-     box-sizing: border-box;
-     font-size: 100%;
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-size: 100%;
  }
 
  body > * {
-     font-family: 'Lato', sans-serif;
-     line-height: 1.4;
+   font-family: 'Lato', sans-serif;
+   line-height: 1.4;
  }
 
  img {
-     max-width: 100%;
-     height: auto;
+   max-width: 100%;
+   height: auto;
  }
 
  h1, h2, h3, h4 {
-     font-family: 'Nunito', sans-serif;
-     line-height: 1;
+   font-family: 'Nunito', sans-serif;
+   line-height: 1;
  }
 
  h1 {
-     font-size: 2.5rem;
+   font-size: 2.5rem;
  }
 
  h2 {
-     font-size: 2rem;
+   font-size: 2rem;
  }
 
  h3 {
-     font-size: 1.6rem;
+   font-size: 1.6rem;
  }
 
  h4 {
-     font-size: 1.4rem;
+   font-size: 1.4rem;
  }
 
  p {
-     line-height: 1.4;
+   line-height: 1.4;
  }
 
 a {
-    color: #36bae6;
-    font-weight: bold;
+  color: #36bae6;
+  font-weight: bold;
 }
 
 a:hover {
-    color: #e06630;
+  color: #e06630;
 }
 
 i {
-    padding-left: .5rem;
+  padding-left: .5rem;
 }
 
 /* ############ 2. Hero ############ */
@@ -88,15 +88,22 @@ i {
   color: #fff;
   font-size: 20px;
   text-align: center;
+  display: grid;
+  grid-template-columns: 10px 2fr 10px;
+  grid-template-rows: .5fr 1fr 20px;
+  grid-gap: 20px;
  }
 
 .hero img {
   margin: auto;
   padding-top: 1rem;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 }
 
 .hero article {
-
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
 }
 
 .hero h1 {
@@ -151,16 +158,21 @@ i {
     background: url(../images/header1_lg.jpg) no-repeat center left;
     background-size: cover;
     text-align: left;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: .25fr 1fr .25fr;
+    align-items: center;
   }
 
   .hero img {
     margin: 0 0 0 auto;
+    grid-row: 2 / 3;
   }
 
   .hero article {
    max-width: 1000px;
+   grid-column: 3 / 6;
   }
-  
+
 }
 /* ############ 10b. Media Query, (min-width: 1000px) ############ */
 @media screen and (min-width: 1000px) {
