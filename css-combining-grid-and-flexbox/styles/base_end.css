@@ -744,6 +744,9 @@ section.problem {
 
   .action article {
     margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
   }
 
   .action article h1 {
@@ -752,9 +755,13 @@ section.problem {
   }
 
   .action ul {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .action ul li {
+    flex-basis: 48%;
+    grid-template-columns: 2fr 4fr;
   }
 
 }

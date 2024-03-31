@@ -497,6 +497,9 @@ section.problem {
   border-radius: 6px;
   list-style-type: none;
   margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
 }
 
 .action li h1 {
@@ -507,6 +510,8 @@ section.problem {
   padding-top: 1rem;
   text-align: center;
   text-shadow: 1px 1px 2px #223055;
+  grid-column: 1 / 2;
+  grid-row: span 2;
 }
 
 .action li h4 {
@@ -514,10 +519,13 @@ section.problem {
   border-radius: 0 6px 0 0;
   color: #fff;
   padding: .5rem 1rem;
+  grid-column: 2 / -1;
+  align-self: start;
 }
 
 .action li p {
   padding: .5rem 1rem 1rem;
+  grid-column: 2 / -1;
 }
 
 .action li:nth-of-type(2) h1 {
