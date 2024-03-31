@@ -305,6 +305,7 @@ CSS Grid layout for wider screens, when browser supports grid:
 				"nav main"
 				"nav sidebar"
 				"nav footer";
+			transition: left .6s;
 		}
 
 		.reveal {
@@ -332,12 +333,12 @@ CSS Grid layout for wider screens, when browser supports grid:
 		}
 
 		.main-nav ul {
-			position: fixed;
+			/*position: fixed;*/
 			display: none;
 			flex-direction: column;
 		}
 
-		.reveal .main-nav ul {
+		.open ul {
 			display: flex;
 		}
 
@@ -346,6 +347,7 @@ CSS Grid layout for wider screens, when browser supports grid:
 			display: block;
 			top: 1.5em;
 			left: .2em;
+			transition: left .6s;
 		}
 
 		.reveal .trigger {
