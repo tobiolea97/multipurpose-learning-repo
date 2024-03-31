@@ -289,16 +289,37 @@ Basic responsive layout for all browsers:
 CSS Grid layout for modern browsers:
 --------------------------------------------------------------*/
 
+/* Check for CSS Grid support: */
 @supports (grid-area: auto) {
 
-	.site {
-		max-width: none;
+	/* Enable grid for viewports 600px and wider: */
+	@media screen and (min-width: 600px) {
+
+		/* Disable fallback max-width center aligned rule: */
+		.site {
+			max-width: none;
+		}
+
+		/* Four-column layout: Two center columns have total width of 50em: */
+		.main-area > *,
+		.colophon {
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+		}
+
+		/* Center items by placing them in the two center columns: */
+		.splash-content,
+		.more-content,
+		.buckets ul {
+			grid-column: 2/4;
+		}
+
+		/* Use automatic grid placement + span to let each item span two columns: */
+		.twin,
+		.colophon aside {
+			grid-column: 2 span;
+		}
+
 	}
-
-	.main-area > *,
-	.colophon {
-		display: grid;
-	}
-
-
+	
 }
