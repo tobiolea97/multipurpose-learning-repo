@@ -25,6 +25,7 @@ TABLE OF CONTENTS
       10a-vii. Actions
       10a-viii. Footer
     10b. Media Query, (min-width: 1000px)
+    10c. Feature Query
 
 */
 
@@ -257,6 +258,7 @@ nav .btn {
   padding: 0.25rem .6rem;
   letter-spacing: 1px;
   text-shadow: 0 0 1px rgb(19,177,231);
+  text-align: center;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -1053,7 +1055,8 @@ input[type="radio"]:checked ~ span:before {
     grid-template-columns: auto minmax(min-content, 580px);
     grid-template-areas:
       ". h"
-      ". p";
+      ". p"
+      ". f";
   }
 
   .form h3 {
@@ -1064,10 +1067,17 @@ input[type="radio"]:checked ~ span:before {
     grid-area: p;
   }
 
-  /*  ########### Note viewers, I am going to place all of our new code for the 05_03 lecture here, in between these new code start/end comments. I will end up deleting these comments once we hvae finished. I just want you to be clear on what is different compared with what we had before :) ########### */
-  /*  ########### NEW CODE START (05_03) ########### */
   form#contactForm {
     max-width: initial;
+    grid-area: f;
+    display: grid;
+    grid-template-areas:
+      "name ph"
+      "email news"
+      "radio radio"
+      "msg msg"
+      "btn .";
+    grid-gap: 1rem;
   }
 
   .contactForm div {
@@ -1075,32 +1085,38 @@ input[type="radio"]:checked ~ span:before {
   }
 
   .contactForm div:nth-child(1) {
+    grid-area: name;
   }
 
   .contactForm div:nth-child(2) {
+    grid-area: ph;
   }
 
   .contactForm div:nth-child(3) {
+    grid-area: email;
   }
 
   .contactForm div:nth-child(4) {
+    grid-area: radio;
   }
 
   .contactForm div:nth-child(5) {
+    grid-area: msg;
   }
 
   .contactForm div:nth-child(6) {
     margin: 1.8rem 0 0;
+    grid-area: news;
   }
 
   .contactForm button {
     width: 100%;
+    grid-area: btn;
   }
 
   .contactForm textarea {
     max-width: 100%;
   }
-  /*  ########### NEW CODE END (05_03) ########### */
 
   .social article {
     max-width: 580px;
@@ -1120,3 +1136,5 @@ input[type="radio"]:checked ~ span:before {
   }
 
 }
+
+/* ############ 10c. Feature Query ############ */

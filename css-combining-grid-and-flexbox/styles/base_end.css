@@ -25,6 +25,7 @@ TABLE OF CONTENTS
       10a-vii. Actions
       10a-viii. Footer
     10b. Media Query, (min-width: 1000px)
+    10c. Feature Query
 
 */
 
@@ -135,7 +136,11 @@ i {
  }
 
 .navWrap {
-  position: sticky;/*  ** note the menu will not be sticky until we add more page content */
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
   top: 0;
   z-index: 99;
   height: 48px;
@@ -257,6 +262,7 @@ nav .btn {
   padding: 0.25rem .6rem;
   letter-spacing: 1px;
   text-shadow: 0 0 1px rgb(19,177,231);
+  text-align: center;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -1065,8 +1071,6 @@ input[type="radio"]:checked ~ span:before {
     grid-area: p;
   }
 
-  /*  ########### Note viewers, I am going to place all of our new code for the 05_03 lecture here, in between these new code start/end comments. I will end up deleting these comments once we hvae finished. I just want you to be clear on what is different compared with what we had before :) ########### */
-  /*  ########### NEW CODE START (05_03) ########### */
   form#contactForm {
     max-width: initial;
     grid-area: f;
@@ -1117,7 +1121,6 @@ input[type="radio"]:checked ~ span:before {
   .contactForm textarea {
     max-width: 100%;
   }
-  /*  ########### NEW CODE END (05_03) ########### */
 
   .social article {
     max-width: 580px;
@@ -1137,3 +1140,16 @@ input[type="radio"]:checked ~ span:before {
   }
 
 }
+
+/* ############ 10c. Feature Query ############ */
+/* SAFARI 11+ */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+    .galleryWrap  {
+      align-items: stretch;
+      }
+      .galleryWrap img {
+        height: inherit;
+      }
+    }
+  }
