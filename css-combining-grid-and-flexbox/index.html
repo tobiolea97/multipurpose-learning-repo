@@ -219,7 +219,60 @@
     <section class="form" id="contact">
       <h3>Got questions? Get in touch</h3>
       <p class="formIntro">If you'd like more information about any of our trips, please reach out and we will contact you promptly. And while you're at it, signup for our newsletter to stay informed on all the latest MAR adventures, research and awesome images that we've captured along the way.</p>
+
+    <!-- Form  -->
+      <form action="#" method="post" id="contactForm" class="contactForm">
+        <div>
+          <label for="fullName">Your Name:</label>
+          <input type="text" name="fullName" id="fullName" required>
+        </div>
+
+        <div>
+          <label for="phone">Phone:</label>
+          <input type="tel" name="phone" id="phone" maxlength="12" placeholder="111-222-3333" required>
+        </div>
+
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+
+        <div class="radioBtns">
+          <p>Preferred method of contact:</p>
+          <label for="contactEmail">
+            <input type="radio" name="contact" id="contactEmail" value="email">
+            <span></span>
+            Email
+          </label>
+
+          <label for="contactTel">
+            <input type="radio" name="contact" id="contactTel" value="phone">
+            <span></span>
+            Phone
+          </label>
+
+          <label for="contactText">
+            <input type="radio" name="contact" id="contactText" value="text">
+            <span></span>
+            Text
+          </label>
+        </div>
+
+        <div>
+          <label for="msg">Your Message / Question:</label>
+          <textarea name="msg" id="msg"></textarea>
+        </div>
+
+        <div class="checks">
+          <input type="checkbox" name="newsletter" id="newsletter" checked>
+          <span></span>
+          <label for="newsletter">Sign up for our newsletter!</label>
+        </div>
+
+        <button type="submit" value="Send Message" form="contactForm"><i class="fas fa-fish"></i> Send Request </button>
+      </form>
     </section>
+
     <!-- Social Media -->
     <section class="social">
       <article>
