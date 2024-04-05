@@ -18,18 +18,13 @@ export const logInRoute = {
         const isCorrect = await bcrypt.compare(password, passwordHash);
 
         if (isCorrect) {
-            jwt.sign(
-                { id, isVerified, email, info },
-                process.env.JWT_SECRET,
-                { expiresIn: '2d' },
-                (err, token) => {
-                    if (err) {
-                        res.status(500).json(err);
-                    }
-
-                    res.status(200).json({ token });
+            jwt.sign({ id, isVerified, email, info }, process.env.JWT_SECRET, { expiresIn: '2d' }, (err, token) => {
+                if (err) {
+                    res.status(500).json(err);
                 }
-            );
+
+                res.status(200).json({ token });
+            });
         } else {
             res.sendStatus(401);
         }
