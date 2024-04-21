@@ -1,15 +1,12 @@
 package com.example;
 
-public final class PrintSpooler {
+public enum PrintSpooler {
 
-    private static PrintSpooler INSTANCE;
+    INSTANCE;
 
     private PrintSpooler() {}
 
-    public static PrintSpooler getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new PrintSpooler();
-        }
+    public synchronized static PrintSpooler getInstance() {
         return INSTANCE;
     }
 
