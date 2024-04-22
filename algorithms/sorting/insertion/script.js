@@ -1,34 +1,19 @@
-function insertionSort(arr, n)  
-{  
+function insertionSort(arr)  
+{
+    let length = arr.length;
     let i, key, j;  
-    for (i = 1; i < n; i++) 
+    for (i = 1; i < length; i++) 
     {  
         key = arr[i];  
-        j = i - 1;  
-  
-        /* Move elements of arr[0..i-1], that are  
-        greater than key, to one position ahead  
-        of their current position */
+        j = i - 1;
         while (j >= 0 && arr[j] > key) 
         {  
             arr[j + 1] = arr[j];  
             j = j - 1;  
         }  
         arr[j + 1] = key;  
-    }  
-}  
-  
+    }
+    return arr;
+}
 
-function printArray(arr, n)  
-{  
-    let i;  
-    for (i = 0; i < n; i++)  
-        document.write(arr[i] + " ");  
-    document.write("<br>"); 
-}    
-
-let arr = [12, 11, 13, 5, 6 ];  
-let n = arr.length;  
-
-insertionSort(arr, n);  
-printArray(arr, n);  
+console.log(insertionSort([12, 11, 13, 5, 6 ]));
