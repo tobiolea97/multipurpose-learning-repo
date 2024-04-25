@@ -38,3 +38,10 @@ const recursiveBinarySearch = () => {
     
 }
 //console.log(recursiveBinarySearch());
+
+/*****************************************
+*   Linear binary search
+*****************************************/
+const linearBinarySearch = () => {
+}
+console.log();
