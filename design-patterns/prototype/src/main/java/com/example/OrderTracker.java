@@ -6,13 +6,13 @@ public class OrderTracker {
 
     public static void main(String[] args) {
 
-        PizzaFlavor hawaiian = new PizzaFlavor("Hawaiian");
-        Pizza hawaiianPizza1 = new Pizza(4, hawaiian);
+        PizzaFlavor hawaiianFlavor = new PizzaFlavor("Hawaiian");
+        Pizza hawaiianPizza1 = new Pizza(4, hawaiianFlavor);
         Pizza hawaiianPizza2 = hawaiianPizza1.clone();
         Pizza hawaiianPizza3 = hawaiianPizza1.clone();
         Pizza hawaiianPizza4 = hawaiianPizza1.clone();
         Pizza hawaiianPizza5 = hawaiianPizza1.clone();
-
+        hawaiianFlavor.setName("Hawaiian with extra cheese");
 
         PizzaFlavor pepperoni = new PizzaFlavor("Pepperoni");
         Pizza pepperoniPizza1 = new Pizza(5, pepperoni);
