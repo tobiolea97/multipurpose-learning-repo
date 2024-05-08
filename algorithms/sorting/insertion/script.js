@@ -1,4 +1,8 @@
 function insertionSort(arr) {
+<<<<<<< HEAD
+    debugger
+=======
+>>>>>>> algorithms
     let length = arr.length;
     for (let i = 1; i < length; i++) 
     {  
@@ -14,4 +18,4 @@ function insertionSort(arr) {
     return arr;
 }
 
-console.log(insertionSort([12, 11, 13, 5, 6 ]));
+console.log(insertionSort([12,11,13,5,6,9]));
