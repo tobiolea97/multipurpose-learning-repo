@@ -1,57 +1,55 @@
-function merge(arr, l, m, r)
-{
-    var n1 = m - l + 1;
-    var n2 = r - m;
+function merge(array, leftHalf, rightHalf) {
+    let leftSize = leftHalf.length;
+    let rightSize = rightHalf.length;
 
-    var L = new Array(n1); 
-    var R = new Array(n2);
+    let i = 0, j = 0, k = 0;
 
-    for (var i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-    for (var j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j];
-
-    var i = 0;
-    var j = 0;
-    var k = l;
-
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
+    while (i < leftSize && j < rightSize) {
+        if (leftHalf[i] <= rightHalf[j]) {
+          array[k] = leftHalf[i];
+          i++;
         }
         else {
-            arr[k] = R[j];
-            j++;
+          array[k] = rightHalf[j];
+          j++;
         }
         k++;
     }
 
-    while (i < n1) {
-        arr[k] = L[i];
+    while (i < leftSize) {
+        array[k] = leftHalf[i];
         i++;
         k++;
-    }
-    
-    while (j < n2) {
-        arr[k] = R[j];
+      }
+      
+      while (j < rightSize) {
+        array[k] = rightHalf[j];
         j++;
         k++;
-    }
+      }
 }
 
+function mergeSort(array) {
+    let length = array.length;
+    
+    if(length < 2)
+        return
 
-function mergeSort(arr,l, r){
-    if(l>=r){
-        return;
-    }
-    var m =l+ parseInt((r-l)/2);
-    mergeSort(arr,l,m);
-    mergeSort(arr,m+1,r);
-    merge(arr,l,m,r);
+    let middle = Math.floor(length / 2);
+    let leftHalf = [], rightHalf = [];
+
+    for(let i = 0; i < middle; i++)
+        leftHalf.push(array[i])
+    
+    for(let i = middle; i < length; i++)
+        rightHalf.push(array[i])
+
+    mergeSort(leftHalf);
+    mergeSort(rightHalf);
+
+    merge(array, leftHalf, rightHalf)
 }
 
-
-var arr = [ 12, 11, 13, 5, 6, 7 ];
-mergeSort(arr, 0, arr.length - 1);
-console.log(arr);
+var array = [ 12, 11, 13, 5, 6, 7 ];
+mergeSort(array);
+console.log(array);
