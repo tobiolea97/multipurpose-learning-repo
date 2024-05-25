@@ -27,9 +27,12 @@ function merge(array, leftHalf, rightHalf) {
         j++;
         k++;
       }
+      console.log("merge realizado: ", leftHalf, rightHalf, array);
 }
 
 function mergeSort(array) {
+    console.log("entrado a mergeSort", array);
+
     let length = array.length;
     
     if(length < 2)
@@ -50,6 +53,6 @@ function mergeSort(array) {
     merge(array, leftHalf, rightHalf)
 }
 
-var array = [ 12, 11, 13, 5, 6, 7 ];
+var array = [ 12, 11, 13, 5, 6, 7, 1,58,32,69,784,523,695,145,78,25 ];
 mergeSort(array);
 console.log(array);
