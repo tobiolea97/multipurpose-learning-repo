@@ -109,37 +109,51 @@ footer small {
 
 
 /* layout */
+
+:root {
+    --content-margin: 2rem 1rem;
+    --bottom-margin: 3rem;
+}
+
 .content {
-    margin: 2rem 1rem;
+    margin: var(--content-margin);
 }
 aside, main {
-    margin-bottom: 3rem;
+    margin-bottom: var(--bottom-margin);
 }
 aside h3 {
     margin-top: 1rem;
 }
 @media (min-width: 600px) {
+    :root {
+        --content-margin: 3rem auto;
+        --cols: repeat(2, 1fr);
+        --max: 550px;
+        --main-col: 1/3;
+    }
     .content {
+        /* carry into desktop */
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
         grid-gap: 3rem;
-        max-width: 550px;
-        margin: 3rem auto;
+
+        /* values change on desktop */
+        grid-template-columns: var(--cols);
+        max-width: var(--max);
     }
     main {
-        grid-column: 1/3;
+        grid-column: var(--main-col);
     }
     aside {
-        margin-bottom: 0;
+        --bottom-margin: 0;
     }
 }
 @media (min-width: 1000px) {
-    .content {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1000px;
+    :root {
+        --cols: repeat(3, 1fr);
+        --max: 1000px;
+        --main-col: 2/4;
     }
     main {
-        grid-column: 2/4;
         grid-row: 1/3;
     }
     .news {
