@@ -1,31 +1,20 @@
+
 body {
   display: flex;
   justify-content: center;
   margin-top:3em;
-  background-color: #372D4D;
+  background-color: #6F7295;
+  perspective: 1000px;
 }
 
-img {width: 150px;}
+.wrap {
+  width: 100%;
+}
+
+img {width: 300px;}
 
 .robot {
-transform: rotate(45deg) scale(2) translate(100px, 200px);
+ transform: translate3d(100px, 200px, -100px);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
