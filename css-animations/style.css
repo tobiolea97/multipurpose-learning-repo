@@ -1,32 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@900&display=swap");
 
-@keyframes scaleIn {
-  0% {transform: scale(0.2);}
-  85% {transform:scale(1.1);}
-  100% {transform:scale(1);}
+@keyframes move {
+ 0% {transform:translateX(0);}
+ 100% {transform: translateX(900px);}
 }
 
-
-h2 {
-  font-size: 10rem;
-  font-family: "Fira Sans", sans-serif;
-  color: #DCF2B0;
-  text-shadow: 3px 3px 0px #59C3C3;
-  
-  animation-name: scaleIn;
-  animation-duration: 2s;
-  animation-delay: 5s;
-  animation-fill-mode: backwards;
+.robot {
+  animation-name: move;
+  animation-duration: 3s;
 }
 
-.wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+/*------ other styles ---*/
 
 body {
+  margin:3em;
   background-color: #433F55;
-  margin:0;
 }
+
+img {width: 100px;}
