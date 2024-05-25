@@ -1,42 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
 
-.robot {
-  animation-name: move;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-  animation-iteration-count:3;
-  animation-direction: alternate-reverse;
+
+
+h1 {
+animation: typing 3s steps(14),
+           blinking 0.5s steps(1) infinite;
 }
 
-@keyframes move {
+@keyframes typing {
+  0% {
+    width:0px;
+  }
   100% {
-    transform: translateX(700%);
+    width: 100%;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*------ other styles ---*/
-
-body {
-  margin:3em;
-  background-color: #433F55;
+@keyframes blinking {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #CE2D4F;
+    }
 }
 
-img {width: 100px;}
+
+h1 {
+  color: #433F55;
+  font-family: 'Fira Mono', monospace;
+  overflow: hidden; 
+  border-right: .15em solid #CE2D4F; 
+
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em; 
+}
+
+
+body {
+  padding-top: 5em;
+  background: #cfcfcf;
+  display: flex;
+  justify-content: center;
+ 
+}
 
