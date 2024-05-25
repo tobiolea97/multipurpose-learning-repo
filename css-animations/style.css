@@ -1,58 +1,28 @@
-#heartfill {
-  transform-origin: 50% 50%;
-  transform-box: fill-box;
-   animation: beat .8s linear,
-              fade 0.25s reverse both;
+.bot {
+  width:100px;
+  offset-path: path('M.542,219.99c540.71,0,477.005-218.911,277.995-218.37S7.081,219.99,539.573,219.99');
+  offset-rotate: auto;
+  animation: fly 9s cubic-bezier(.22, 0,.76, 1) both;
 }
 
-#outline {
-  animation: fade .25s .4s linear both;
-} 
-
-
-@keyframes beat {
+@keyframes fly {
   0% {
-    transform: scale(0.1);
-  }
-  80% {
-    transform: scale(1.25);
+    offset-distance: 0%;
   }
   100% {
-    transform: scale(1);
+    offset-distance: 100%;
   }
 }
-
-@keyframes fade {
-  0% {
-    opacity:1;
- }
-  
-  100% {
-    opacity: 0;
-  }
-}
-
 
 /* other styles */
+.wrap {
+  width:800px;
+}
+
 
 body {
+  margin:8em 0 0 0;
+  background:#433f55;
   display: flex;
-  justify-content:center;
-  margin-top:6rem;
-  background: #fbacb3;
-}
-
-.wrap {
-  width:15vw;
-  display: flex;
-}
-
-
-.cls-1 {
-  fill: #c32d4f;
-}
-
-.cls-2 {
-  fill: none;
-  stroke: #c32d4f;
+  justify-content: center; 
 }
