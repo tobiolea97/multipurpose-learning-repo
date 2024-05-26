@@ -1,0 +1,34 @@
+// Interfaz esperada por el cliente
+public interface Target {
+    void request();
+}
+
+// Clase existente con una interfaz incompatible
+public class Adaptee {
+    public void specificRequest() {
+        System.out.println("Called specificRequest()");
+    }
+}
+
+// Adapter que convierte la interfaz de Adaptee a la interfaz de Target
+public class Adapter implements Target {
+    private Adaptee adaptee;
+
+    public Adapter(Adaptee adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    @Override
+    public void request() {
+        adaptee.specificRequest();
+    }
+}
+
+// Uso del Adapter
+public class Client {
+    public static void main(String[] args) {
+        Adaptee adaptee = new Adaptee();
+        Target target = new Adapter(adaptee);
+        target.request(); // Salida: Called specificRequest()
+    }
+}
