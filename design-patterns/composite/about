@@ -1,0 +1,7 @@
+/***************************************************************************************************/
+/*                                      ¿Para que sirve?                                           */
+/***************************************************************************************************/
+El patrón Composite es un patrón de diseño estructural que permite tratar objetos individuales y
+compuestos de manera uniforme. Este patrón es útil cuando se desea construir jerarquías de objetos
+y trabajar con ellos de forma recursiva.
+
