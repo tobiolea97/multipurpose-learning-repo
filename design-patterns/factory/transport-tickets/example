@@ -1,0 +1,67 @@
+public interface Ticket {
+
+    int getPrice();
+
+}
+
+
+public class BusTicket implements Ticket {
+
+
+    @Override
+    public int getPrice() {
+        return 3;
+    }
+}
+
+public class TrainTicket implements Ticket {
+
+    @Override
+    public int getPrice() {
+        return 7;
+    }
+
+}
+
+public class TicketMachine {
+
+
+    private static final Map<String, Supplier<Ticket>> ticketMap = new HashMap<>();
+
+    static {
+        ticketMap.put("Bus", BusTicket::new);
+        ticketMap.put("Train", TrainTicket::new);
+    }
+
+    Ticket createTicket(String ticketType) {
+       if (ticketMap.get(ticketType) != null) {
+           return ticketMap.get(ticketType).get();
+       } else {
+           throw new IllegalArgumentException("Invalid ticket type");
+       }
+    }
+
+
+}
+
+public class TicketOffice {
+
+    private static final TicketMachine ticketMachine = new TicketMachine();
+
+
+    public static void main(String[] args) {
+        buyABusTicket();
+        buyATrainTicket();
+    }
+
+    private static void buyABusTicket() {
+        var ticket = ticketMachine.createTicket("Bus");
+        System.out.println("One bus ticket purchased. The price is $" + ticket.getPrice() + ".");
+    }
+
+    private static void buyATrainTicket() {
+        var ticket = ticketMachine.createTicket("Train");
+        System.out.println("One train ticket purchased. The price is $" + ticket.getPrice() + ".");
+    }
+
+}
