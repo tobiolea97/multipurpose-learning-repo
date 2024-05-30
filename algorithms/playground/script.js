@@ -29,6 +29,8 @@ const bubbleSort = (array) => {
 *   Insertion sort
 *****************************************/
 const insertionSort = (array) => {
+    
+    return array
 } 
 // console.log(insertionSort([3,5,8,9,6,4,1,2,7,0,100,-100,14]));
 
@@ -57,7 +59,7 @@ const insertionSort = (array) => {
 const mergeSortWrapper = (array) => {
     return array;
 }
-console.log(mergeSortWrapper([3,5,8,9,6,4,1,2,7,0,100,-100,14]));
+// console.log(mergeSortWrapper([3,5,8,9,6,4,1,2,7,0,100,-100,14]));
 
 /*********************************************************************/
 let sortedArray = [1,2,3,4,5,6,7,8,9,10,11,12];
