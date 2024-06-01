@@ -74,3 +74,5 @@ public class CompositePatternDemo {
 
         Manager man1 = new Manager(200, "Mike Manager", "SEO Manager");
         Manager man2 = new Manager(201, "Sara Manager
+    }
+}
