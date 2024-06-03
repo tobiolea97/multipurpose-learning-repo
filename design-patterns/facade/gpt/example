@@ -1,0 +1,63 @@
+// Subsistema Complejo
+class DVDPlayer {
+    public void on() { System.out.println("DVD Player on"); }
+    public void play(String movie) { System.out.println("Playing " + movie); }
+    public void stop() { System.out.println("DVD Player stopped"); }
+    public void off() { System.out.println("DVD Player off"); }
+}
+
+class Amplifier {
+    public void on() { System.out.println("Amplifier on"); }
+    public void setVolume(int level) { System.out.println("Volume set to " + level); }
+    public void off() { System.out.println("Amplifier off"); }
+}
+
+class Projector {
+    public void on() { System.out.println("Projector on"); }
+    public void wideScreenMode() { System.out.println("Wide screen mode"); }
+    public void off() { System.out.println("Projector off"); }
+}
+
+// Fachada
+class HomeTheaterFacade {
+    private DVDPlayer dvdPlayer;
+    private Amplifier amplifier;
+    private Projector projector;
+
+    public HomeTheaterFacade(DVDPlayer dvd, Amplifier amp, Projector proj) {
+        this.dvdPlayer = dvd;
+        this.amplifier = amp;
+        this.projector = proj;
+    }
+
+    public void watchMovie(String movie) {
+        System.out.println("Get ready to watch a movie...");
+        projector.on();
+        projector.wideScreenMode();
+        amplifier.on();
+        amplifier.setVolume(5);
+        dvdPlayer.on();
+        dvdPlayer.play(movie);
+    }
+
+    public void endMovie() {
+        System.out.println("Shutting movie theater down...");
+        dvdPlayer.stop();
+        dvdPlayer.off();
+        amplifier.off();
+        projector.off();
+    }
+}
+
+// Uso del patrón Facade
+public class HomeTheaterTest {
+    public static void main(String[] args) {
+        DVDPlayer dvd = new DVDPlayer();
+        Amplifier amp = new Amplifier();
+        Projector proj = new Projector();
+
+        HomeTheaterFacade homeTheater = new HomeTheaterFacade(dvd, amp, proj);
+        homeTheater.watchMovie("Inception");
+        homeTheater.endMovie();
+    }
+}
