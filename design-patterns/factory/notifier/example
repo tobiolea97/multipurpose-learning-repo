@@ -1,0 +1,61 @@
+// Interfaz de Notificación
+public interface Notification {
+    void notifyUser();
+}
+
+// Implementaciones concretas
+public class EmailNotification implements Notification {
+    @Override
+    public void notifyUser() {
+        System.out.println("Enviando notificación por Email");
+    }
+}
+
+public class SMSNotification implements Notification {
+    @Override
+    public void notifyUser() {
+        System.out.println("Enviando notificación por SMS");
+    }
+}
+
+public class PushNotification implements Notification {
+    @Override
+    public void notifyUser() {
+        System.out.println("Enviando notificación Push");
+    }
+}
+
+// Factory para crear notificaciones
+public class NotificationFactory {
+    public Notification createNotification(String channel) {
+        if (channel == null || channel.isEmpty()) {
+            return null;
+        }
+        switch (channel) {
+            case "EMAIL":
+                return new EmailNotification();
+            case "SMS":
+                return new SMSNotification();
+            case "PUSH":
+                return new PushNotification();
+            default:
+                throw new IllegalArgumentException("Canal de notificación desconocido " + channel);
+        }
+    }
+}
+
+// Uso del Factory
+public class Main {
+    public static void main(String[] args) {
+        NotificationFactory factory = new NotificationFactory();
+
+        Notification notification = factory.createNotification("EMAIL");
+        notification.notifyUser();
+
+        notification = factory.createNotification("SMS");
+        notification.notifyUser();
+
+        notification = factory.createNotification("PUSH");
+        notification.notifyUser();
+    }
+}
