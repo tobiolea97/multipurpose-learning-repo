@@ -48,5 +48,20 @@ public class FunctionalProgramming {
         Function<Integer, Integer> multiplyByFive = CustomMath.createMultiplier(5);
         System.out.println(multiplyByFive.apply(3));
 
+        // Check that dividend is not zero
+        System.out.println("\n###Check that dividend is not zero");
+        BiFunction<Float, Float, Float> divide = (x, y) -> x / y;
+        Function<BiFunction<Float, Float, Float>, BiFunction<Float, Float, Float>> secondArgIsntZeroCheck =
+                (func) -> (x, y) -> {
+                    if (y == 0f) {
+                        System.out.println("Error: second argument is zero!");
+                        return 0f;
+                    }
+                    return func.apply(x, y);
+                };
+        BiFunction<Float, Float, Float> divideSafe = secondArgIsntZeroCheck.apply(divide);
+        System.out.println(divideSafe.apply(10f, 2f));
+
+
     }
 }
