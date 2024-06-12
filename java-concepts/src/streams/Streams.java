@@ -1,9 +1,6 @@
 package streams;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -152,6 +149,31 @@ public class Streams {
                 .collect(Collectors.toList());
 
         System.out.println(processedWords);
+
+        // using groupingBy, entrySet and Collectors.toMap
+        Set<Map.Entry<String, List<Employee>>> entryset = employees
+                .stream()
+                .collect(Collectors.groupingBy(
+                        (employee) -> employee.jobTitle
+                ))
+                .entrySet();
+
+        Map<String, Float> averageSalariesMap = employees
+                .stream()
+                .collect(Collectors.groupingBy(
+                        (employee) -> employee.jobTitle
+                ))
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        (entry) -> entry.getKey(),
+                        (entry) -> entry.getValue()
+                                .stream()
+                                .map((employee) -> employee.salary)
+                                .reduce(0f, (acc, x) -> acc + x) / entry.getValue().size()
+                ));
+
+        System.out.println(averageSalariesMap);
     }
 
     protected static class Employee {
