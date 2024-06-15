@@ -98,3 +98,21 @@ console.log(recursiveBinarySearch(sortedArray, 8, 0, sortedArray.length));
 const linearBinarySearch = () => {
 }
 // console.log(linearBinarySearch());
+
+/*****************************************
+*   Naive pattern searching
+*****************************************/
+function naiveSearch(pattern, string) {
+    
+}
+
+const txt1 = "AABAACAADAABAABA";
+const pat1 = "AABA";
+console.log("Example 1:");
+naiveSearch(pat1, txt1);
+
+// Example 2
+const txt2 = "agd";
+const pat2 = "g";
+console.log("\nExample 2:");
+naiveSearch(pat2, txt2);
