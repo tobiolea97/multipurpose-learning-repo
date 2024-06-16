@@ -2,12 +2,19 @@
 *   Fibo
 *****************************************/
 const fibo = (number) => {
+    let n1 = 0, n2 = 1, n3 = 0
+    for(let i = 0; i < number; i++) {
+        n3 = n2;
+        n2 = n1;
+        n1 = n2 + n3;
+    }
+    return n1
 }
 let arrayFibo = []
 for(let i = 0; i < 15; i++) {
     arrayFibo.push(fibo(i));
 }
-//console.log(arrayFibo);
+// console.log(arrayFibo);
 
 /*****************************************
 *   Selection sort
@@ -67,9 +74,23 @@ let sortedArray = [1,2,3,4,5,6,7,8,9,10,11,12];
 /*****************************************
 *   Recursive binary search
 *****************************************/
-const recursiveBinarySearch = () => {
+const recursiveBinarySearch = (array, number, left, right) => {
+    if(left > right)
+        return -1
+
+    let middle = Math.floor((right - left) / 2) + left
+    
+    if(number < array[middle])
+        return recursiveBinarySearch(array, number, left, middle - 1)
+    
+    if(number === array[middle])
+        return middle
+    
+    if(array[middle] < number)
+        return recursiveBinarySearch(array, number, middle + 1, right)
+
 }
-// console.log(recursiveBinarySearch());
+console.log(recursiveBinarySearch(sortedArray, 8, 0, sortedArray.length));
 
 /*****************************************
 *   Linear binary search
@@ -77,3 +98,21 @@ const recursiveBinarySearch = () => {
 const linearBinarySearch = () => {
 }
 // console.log(linearBinarySearch());
+
+/*****************************************
+*   Naive pattern searching
+*****************************************/
+function naiveSearch(pattern, string) {
+    
+}
+
+const txt1 = "AABAACAADAABAABA";
+const pat1 = "AABA";
+console.log("Example 1:");
+naiveSearch(pat1, txt1);
+
+// Example 2
+const txt2 = "agd";
+const pat2 = "g";
+console.log("\nExample 2:");
+naiveSearch(pat2, txt2);
