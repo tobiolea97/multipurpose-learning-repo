@@ -1,24 +1,21 @@
-# Array Deque
+# Array List
 
-Double endend queue:
+🆗🆗🆗
+- Es una coleccion que se utiliza para almacenar una coleccion dinamicas de elementos
+- Se puede utilizar un indice para obtener un elemento
+- El orden de insercion se mantiene
+- Permite elementos duplicados
 
-- Brinda la posibilidad de agregar elementos al principio o al final.
-- No es sincornizado, por lo cual por default no es seguro para apps multihilo
-- Eficiente para implementar pilas o colas.
+😡😡😡
+- Ocupan mas memoria (necesita un espacio contiguo)
+- Las inserciones son mas costosas
 
 ### Metodos utilizados
-``` java
- push()     // apilar
- pop()      // desapilar
- add()      // encolar
- remove()   // desencolar
- addFirst()
- addLast()
- removeFirst()
- removeLast()
+``` java 
+add(e)
+remove(e)
+get(i)
+set(i, e)
+contains(e)
 ```
-
-# Priority Queue
-
-Funciona como una cola pero que toma los elementos en base a un orden de prioridad. Ese orden puede ser el natural o uno establecido vía un Predicate al inicializar el objeto.
 
