@@ -2,7 +2,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LinkedListExamples {
+public class _LinkedListExamples {
 
   public static void main(String[] args) {
 
