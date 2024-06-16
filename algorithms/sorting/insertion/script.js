@@ -1,5 +1,4 @@
 function insertionSort(arr) {
-    debugger
     let length = arr.length;
     for (let i = 1; i < length; i++) 
     {  
