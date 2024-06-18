@@ -1,5 +1,13 @@
 # Iterator
-Provee una forma de acceder a los elementos de una coleccion. Ocultan la estructura subyacente
+El patrón Iterator es un patrón de diseño de comportamiento que permite recorrer los elementos de una colección sin exponer su representación subyacente. Proporciona una forma de acceder secuencialmente a los elementos de un agregado (colección) sin necesidad de conocer su estructura interna.
+
+### Usos del patrón Iterator
+- Acceso Secuencial: Permite recorrer una colección de elementos de manera secuencial sin exponer los detalles internos de la colección.
+- Diversidad de Estructuras: Funciona con diferentes tipos de colecciones (listas, conjuntos, mapas, etc.) de manera uniforme.
+- Simplificación del Código: Separa la lógica de recorrido de la colección de la lógica de la colección misma, simplificando el código.
+- Consistencia en el Recorrido: Proporciona una interfaz consistente para recorrer diferentes tipos de colecciones.
+
+### Ejemplo 1
 
 ```java
 public class Item {
@@ -93,4 +101,69 @@ public class App {
     }
 
 }
+```
+
+### Ejemplo 1
+
+```java
+public interface Iterator<T> {
+    boolean hasNext();
+    T next();
+}
+
+public interface IterableCollection<T> {
+    Iterator<T> createIterator();
+}
+
+public class ConcreteIterator<T> implements Iterator<T> {
+    private List<T> collection;
+    private int position = 0;
+
+    public ConcreteIterator(List<T> collection) {
+        this.collection = collection;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return position < collection.size();
+    }
+
+    @Override
+    public T next() {
+        if (this.hasNext()) {
+            return collection.get(position++);
+        }
+        return null;
+    }
+}
+
+public class ConcreteCollection<T> implements IterableCollection<T> {
+    private List<T> items = new ArrayList<>();
+
+    public void addItem(T item) {
+        items.add(item);
+    }
+
+    @Override
+    public Iterator<T> createIterator() {
+        return new ConcreteIterator<>(items);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ConcreteCollection<String> collection = new ConcreteCollection<>();
+        collection.addItem("Item 1");
+        collection.addItem("Item 2");
+        collection.addItem("Item 3");
+
+        Iterator<String> iterator = collection.createIterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+
+
+
 ```
