@@ -20,6 +20,18 @@ for(let i = 0; i < 15; i++) {
 *   Selection sort
 *****************************************/
 const selectionSort = (array) => {
+    let size = array.length;
+    for(let i = 0; i < size; i++) {
+        let minorIndex = i;
+        for(let j = i + 1; j < size; j++) {
+            if(array[minorIndex] > array[j])
+                minorIndex = j;
+        }
+        let temp = array[i]
+        array[i] = array[minorIndex]
+        array[minorIndex] = temp
+    }
+    return array
 } 
 // console.log(selectionSort([3,5,8,9,6,4,1,2,7,0,100,-100,14,2]));
 
@@ -28,15 +40,32 @@ const selectionSort = (array) => {
 *   Bubble sort
 *****************************************/
 const bubbleSort = (array) => {
-    
+    let size = array.length;
+    for(let i = size; i > 0; i--)
+        for(let j = 0; j < i; j++)
+            if(array[j] < array[j+1]){
+                let temp = array[j+1]
+                array[j+1] = array[j]
+                array[j] = temp
+            }
+    return array
 } 
 // console.log(bubbleSort([3,5,8,9,6,4,1,2,7,0,100,-100,14]));
 
 /*****************************************
 *   Insertion sort
 *****************************************/
-const insertionSort = (array) => {
-    
+const insertionSort = (array) => {  
+    let size = array.length;
+    for(let i = 1; i < size; i++) {
+        let minor = array[i]
+        j = i - 1;
+        while(j >= 0 && array[j] > minor) {
+            array[j+1] = array[j]
+            j--
+        }
+        array[++j] = minor
+    }
     return array
 } 
 // console.log(insertionSort([3,5,8,9,6,4,1,2,7,0,100,-100,14]));
@@ -61,12 +90,36 @@ const insertionSort = (array) => {
     [(2),(8),(12)] [(1),(4),15]         → [1,2,4,8,12]
     [(2),(8),(12)] [(1),(4),(15)]       → [1,2,4,8,12,15]
 *****************************************/
-
-
-const mergeSortWrapper = (array) => {
-    return array;
+function conquer(array, left, right) {
+    let i = 0, j = 0, k = 0
+    while(i < left.length && j < right.length)
+        array[k++] = left[i] < right[j] ? left[i++] : right[j++]
+    while(i < left.length)
+        array[k++] = left[i++]
+    while(j < right.length)
+        array[k++] = right[j++]
 }
-// console.log(mergeSortWrapper([3,5,8,9,6,4,1,2,7,0,100,-100,14]));
+
+function divide(array) {
+    let size = array.length
+    if(size === 1)
+        return
+
+    let left = [], right = [],
+        middle = Math.floor(size / 2);
+    
+    for(let i = 0; i < middle; i++)
+        left.push(array[i])
+    for(let i = middle; i < size; i++)
+        right.push(array[i])
+
+    divide(left)
+    divide(right)
+    conquer(array, left, right)
+
+    return array
+}
+console.log(divide([3,5,8,9,6,4,1,2,7,0,100,-100,14]));
 
 /*********************************************************************/
 let sortedArray = [1,2,3,4,5,6,7,8,9,10,11,12];
@@ -90,7 +143,7 @@ const recursiveBinarySearch = (array, number, left, right) => {
         return recursiveBinarySearch(array, number, middle + 1, right)
 
 }
-console.log(recursiveBinarySearch(sortedArray, 8, 0, sortedArray.length));
+// console.log(recursiveBinarySearch(sortedArray, 8, 0, sortedArray.length));
 
 /*****************************************
 *   Linear binary search
@@ -108,11 +161,9 @@ function naiveSearch(pattern, string) {
 
 const txt1 = "AABAACAADAABAABA";
 const pat1 = "AABA";
-console.log("Example 1:");
-naiveSearch(pat1, txt1);
+// naiveSearch(pat1, txt1);
 
 // Example 2
 const txt2 = "agd";
 const pat2 = "g";
-console.log("\nExample 2:");
-naiveSearch(pat2, txt2);
+// naiveSearch(pat2, txt2);
