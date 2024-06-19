@@ -51,3 +51,18 @@ docker pull ngix:latest
 
 - Copy Wildcards
 ![wildcards](images/copy-wildcards.png)
+
+
+- Run command
+```Dockerfile
+    # RUN
+    # Command that will be executed when the image is built
+    # RUN $command
+    RUN apt-get update
+    RUN apt-get install -y nginx
+    
+    # alternative syntax
+    RUN["apt-get", "update"]
+    RUN["apt-get", "install", "-y", "nginx"]
+```
+
