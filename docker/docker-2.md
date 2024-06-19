@@ -66,3 +66,11 @@ docker pull ngix:latest
     RUN["apt-get", "install", "-y", "nginx"]
 ```
 
+- Entrypoint
+```Dockerfile
+    # ENTRYPOINT
+    # Command that will be executed when the container is started
+    # ENTRYPOINT $command
+    ENTRYPOINT ["nginx", "-g", "daemon off;"]
+```
+
