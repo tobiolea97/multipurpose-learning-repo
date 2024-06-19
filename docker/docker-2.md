@@ -109,3 +109,63 @@ docker pull ngix:latest
     # ENV $variable-name $variable-value
     ENV MY_ENV_VAR my-value
 ```
+
+### Useful commands
+
+- LABEL
+```Dockerfile
+    # LABEL
+    # Command that sets metadata for the image
+    # LABEL $key=$value
+    LABEL version="1.0"
+    LABEL maintainer="tobiolea97@gmail.com"
+```
+
+- WORKDIR
+```Dockerfile
+    # WORKDIR
+    # Command that sets the working directory for the container
+    # WORKDIR $directory
+    WORKDIR /var/www/html
+```
+
+- USER
+```Dockerfile
+    # USER
+    # Command that sets the user that will run the container
+    # USER $user
+    USER www-data
+```
+
+- EXPOSE
+```Dockerfile
+    # EXPOSE
+    # Command that exposes a port to the host
+    # EXPOSE $port
+    EXPOSE 80
+```
+
+
+### Other features
+
+- Multi stage builds
+```Dockerfile
+    # Multi stage builds
+    # Use multiple FROM statements in a single Dockerfile
+    # to create multiple images
+    FROM node:latest as build
+    WORKDIR /app
+    COPY package.json .
+    RUN npm install
+    COPY . .
+    RUN npm run build
+
+    FROM nginx:latest
+    COPY --from=build /app/build /usr/share/nginx/html
+```
+
+- Multi app images
+
+There are some scenarios where you may want to run multiple applications in a single container. This is not recommended as it goes against the best practices of Docker. However, if you need to do this, you can create a single image that runs multiple applications.
+
+
