@@ -91,3 +91,21 @@ docker pull ngix:latest
 - Use an entrypoint when you want to provide a command that will always be executed when the container is started
 - Use a CMD when you want to provide a default command that can be overwritten by the user on the run command
 - CMD is best suited for providing command-line arguments to the entrypoint
+
+### Using ENV and ARG
+
+- ARG
+```Dockerfile
+    # ARG
+    # Command that sets an argument at build time
+    # ARG $variable-name=$variable-value
+    ARG MY_ARG=my-value
+```
+
+- ENV
+```Dockerfile
+    # ENV
+    # Command that sets an environment variable at run time
+    # ENV $variable-name $variable-value
+    ENV MY_ENV_VAR my-value
+```
