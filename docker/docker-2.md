@@ -66,3 +66,28 @@ docker pull ngix:latest
     RUN["apt-get", "install", "-y", "nginx"]
 ```
 
+- Entrypoint
+```Dockerfile
+    # ENTRYPOINT
+    # Command that will be executed when the container is started
+    # ENTRYPOINT $command
+    ENTRYPOINT ["nginx", "-g", "daemon off;"]
+```
+
+- CMD
+```Dockerfile
+    # CMD
+    # Command that will be executed when the container is started
+    # CMD $command
+    CMD ["nginx", "-g", "daemon off;"]
+```
+
+### Combining CMD and Entrypoint
+
+![CMD and Entrypoing](images/entry-point-and-cmd-combinations.png)
+
+### When to use an entrypoint and when to use a CMD?
+
+- Use an entrypoint when you want to provide a command that will always be executed when the container is started
+- Use a CMD when you want to provide a default command that can be overwritten by the user on the run command
+- CMD is best suited for providing command-line arguments to the entrypoint
