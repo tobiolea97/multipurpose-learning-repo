@@ -169,3 +169,31 @@ docker pull ngix:latest
 There are some scenarios where you may want to run multiple applications in a single container. This is not recommended as it goes against the best practices of Docker. However, if you need to do this, you can create a single image that runs multiple applications.
 
 
+- Container privileges and capabilities
+
+Docker containers run with a default set of capabilities that are inherited from the host. You can add or remove capabilities from a container using the --cap-add and --cap-drop flags.
+
+- Container limits
+
+You can set resource limits on a container using the --memory and --cpus flags. This allows you to control the amount of memory and CPU that a container can use.
+
+```bash
+docker run --memory 512m --cpus 0.5 my-image
+```
+
+
+- Log driver and log options
+
+You can configure the logging driver for a container using the --log-driver flag. You can also set log options using the --log-opt flag.
+
+```bash
+docker run --log-driver syslog --log-opt tag=my-container my-image
+```
+
+- Docker in Docker
+
+You can run Docker inside a Docker container by mounting the Docker socket file from the host into the container.
+
+```bash
+docker run -v /var/run/docker.sock:/var/run/docker.sock my-image
+```
