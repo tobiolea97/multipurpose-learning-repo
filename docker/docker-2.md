@@ -197,3 +197,97 @@ You can run Docker inside a Docker container by mounting the Docker socket file 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock my-image
 ```
+
+## Volumes
+
+- Volumes are used to persist data between containers
+- Volumes are stored outside of the container's filesystem
+- Volumes can be shared between containers
+- Volumes can be managed using the docker volume command
+
+### Creating a volume
+
+```bash
+docker volume create my-volume
+```
+
+### Inspecting a volume
+
+```bash
+docker volume inspect my-volume
+```
+
+### Removing a volume
+
+```bash
+docker volume rm my-volume
+```
+
+### Mounting a volume
+
+```bash
+docker run -v my-volume:/data my-image
+```
+
+### Bind mounts
+
+- Bind mounts are used to mount a host directory into a container
+- Bind mounts are stored on the host filesystem
+- Bind mounts can be used to share files between the host and the container
+
+### Mounting a bind mount
+
+```bash
+docker run -v /host-directory:/container-directory my-image
+```
+
+### DD
+Used for writing and reading raw data from block devices
+
+
+## Networking
+
+- Docker provides a default bridge network that containers can use to communicate with each other
+- You can create custom networks to isolate containers
+- You can connect containers to multiple networks
+- You can use the --link flag to connect containers
+
+### Creating a network
+
+```bash
+docker network create my-network
+```
+
+#### Course example
+    
+```bash
+# terminal 1
+docker container create -it --name container-a --entrypoint sh curlimages/curl
+docker container start container-a
+docker container attach container-a
+ifconfig # get the ip address
+ping <ip-address-of-container-b>
+docker network create network-a
+docker container create -it --name container-c --entrypoint sh --net network-a curlimages/curl
+
+# terminal 2
+docker container create -it --name container-b --entrypoint sh curlimages/curl
+docker container start container-b
+docker container attach container-b
+ifconfig # get the ip address 
+ping <ip-address-of-container-a>
+docker network create network-b
+docker container create -it --name container-d --entrypoint sh --net network-b curlimages/curl
+```
+
+#### Connecting a container to a network
+
+```bash
+docker network connect my-network my-container
+```
+
+#### Exposing a port
+
+```bash
+docker run -p 8080:80 my-image
+```
