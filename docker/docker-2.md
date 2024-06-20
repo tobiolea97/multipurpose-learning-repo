@@ -291,3 +291,20 @@ docker network connect my-network my-container
 ```bash
 docker run -p 8080:80 my-image
 ```
+
+#### Host mode networking
+
+This allows a container to use the host's network stack. This can be useful for performance-sensitive applications.
+
+```bash
+docker run --network host my-image
+```
+
+#### Advanced networking
+
+- macvlan and ipvlan
+Used to assign a MAC or IP address to a container
+
+- overlay
+Used to create a multi-host network
+
