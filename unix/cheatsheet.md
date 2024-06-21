@@ -8,8 +8,9 @@ Copy the content of a directory
 cp -r /origin /destination
 ```
 
-Create an SSH
-```bash
-cp -r /origin /destination
-```
 
+Instalar cliente SSH
+```bash
+sudo apt update
+sudo apt install openssh-client
+```
