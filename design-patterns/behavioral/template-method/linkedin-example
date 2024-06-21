@@ -1,0 +1,47 @@
+public abstract class Email {
+
+    public void sendGreeting() {
+        System.out.println("Hello,");
+    }
+
+    public abstract void sendMessageBody();
+
+    public void sendClosing() {
+        System.out.println("Best regards, Sam");
+    }
+}
+
+public class UnsubscribeEmail extends Email {
+
+    public void sendMessageBody() {
+        System.out.println("We are sorry to see you go." );
+    }
+
+}
+
+public class WelcomeEmail extends Email {
+
+    public void sendMessageBody() {
+        System.out.println("Thank you for signing up for our service.");
+    }
+
+}
+
+
+public class App {
+
+    public static void main(String[] args) {
+
+        var welcomeEmail = new WelcomeEmail();
+        welcomeEmail.sendGreeting();
+        welcomeEmail.sendMessageBody();
+        welcomeEmail.sendClosing();
+
+        var unsubscribeEmail = new UnsubscribeEmail();
+        unsubscribeEmail.sendGreeting();
+        unsubscribeEmail.sendMessageBody();
+        unsubscribeEmail.sendClosing();
+
+    }
+
+}
