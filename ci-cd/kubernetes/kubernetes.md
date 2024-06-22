@@ -129,6 +129,8 @@ kubectl get pods -n development -o wide
 kubectl describe pod {id} -n development
 # delete pod
 kubectl delete pod {id} -n development
+# logs
+kubectl logs {id} -n development
 ```
 
 ### Using BusyBox
@@ -141,5 +143,34 @@ kubectl exec -it busybox-54f785c7d7-wqpkh -- /bin/sh
 # una vez dentro del contenedor
 nslookup pod-info-service.development.svc.cluster.local
 wget 10.244.0.3:3000
+
+```
+
+### Kubernetes Services
+
+Un servicio de Kubernetes es una abstracción que define un conjunto lógico de pods y una política para acceder a ellos. Los servicios permiten que las aplicaciones se comuniquen entre sí de forma transparente y escalable, independientemente de su ubicación en el clúster.
+
+``` bash
+# start a tunnel
+minikube tunnel
+
+# ver servicios
+kubectl get services -n development
+``` 
+
+``` yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-service
+  namespace: development
+spec:
+  selector:
+    app: pod-info
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: LoadBalancer
 
 ```
