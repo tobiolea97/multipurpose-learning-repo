@@ -24,6 +24,12 @@ Kubernetes se utiliza principalmente para gestionar contenedores en un entorno d
 - Servicios: Abstracciones que definen un conjunto lógico de pods y una política para acceder a ellos.
 - Controladores: Gestionan el estado de las aplicaciones y garantizan que el número deseado de pods se esté ejecutando en el clúster.
 
+### Terminos
+- Infrastructure as Code
+    "Infrastructure as Code" es una práctica que consiste en gestionar la infraestructura de TI utilizando código y herramientas de automatización. En lugar de configurar manualmente los servidores y los recursos de red, los administradores de sistemas pueden definir la infraestructura como código y utilizar herramientas de automatización para implementar y gestionar la infraestructura de forma coherente y repetible.
+- GitOps
+    "GitOps" es una metodología de operaciones de TI que utiliza Git como fuente de verdad para la infraestructura y las aplicaciones. En un entorno de GitOps, los cambios en la infraestructura y las aplicaciones se gestionan a través de solicitudes de extracción (pull requests) en un repositorio de Git, lo que permite a los equipos de operaciones y desarrollo colaborar de forma eficiente y mantener un historial de cambios completo y auditable.
+
 
 ### Primeros pasos
 
@@ -37,3 +43,27 @@ kubectl get pods -A
 kubectl get services -A
 ``` 
 
+2. Workspaces
+
+Los "workspaces" son espacios de trabajo virtuales que permiten a los usuarios organizar y gestionar sus recursos de forma más eficiente. Cada workspace tiene su propio entorno aislado, lo que facilita la colaboración y la gestión de recursos en entornos compartidos.
+
+``` yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production 
+``` 
+
+``` bash
+# correr el archivo
+kubectl apply -f namespaces.yaml
+# eliminar un namespace
+kubectl delete -f namespaces.yaml
+kubectl delete namespace development
+``` 
