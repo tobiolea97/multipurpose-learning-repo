@@ -29,6 +29,12 @@ Kubernetes se utiliza principalmente para gestionar contenedores en un entorno d
     "Infrastructure as Code" es una práctica que consiste en gestionar la infraestructura de TI utilizando código y herramientas de automatización. En lugar de configurar manualmente los servidores y los recursos de red, los administradores de sistemas pueden definir la infraestructura como código y utilizar herramientas de automatización para implementar y gestionar la infraestructura de forma coherente y repetible.
 - GitOps
     "GitOps" es una metodología de operaciones de TI que utiliza Git como fuente de verdad para la infraestructura y las aplicaciones. En un entorno de GitOps, los cambios en la infraestructura y las aplicaciones se gestionan a través de solicitudes de extracción (pull requests) en un repositorio de Git, lo que permite a los equipos de operaciones y desarrollo colaborar de forma eficiente y mantener un historial de cambios completo y auditable.
+- Cluster
+    Un "cluster" es un conjunto de nodos de trabajo y un nodo maestro que forman un entorno de Kubernetes. Los nodos de trabajo ejecutan las aplicaciones y las cargas de trabajo en contenedores, mientras que el nodo maestro coordina y gestiona el clúster en su conjunto.
+  - Control plane
+    El "control plane" es el componente principal de Kubernetes que gestiona y controla el clúster. Incluye varios componentes, como el API server, el scheduler, el controller manager y el etcd, que trabajan juntos para coordinar y gestionar los recursos del clúster.
+  - Worker node
+    Un "worker node" es un nodo de un clúster de Kubernetes que ejecuta las aplicaciones y las cargas de trabajo en contenedores. Cada nodo de trabajo tiene un agente de Kubernetes llamado kubelet que se comunica con el nodo maestro y gestiona los contenedores en el nodo.  
 
 
 ## Primeros pasos
@@ -122,6 +128,8 @@ kubectl delete deployment pod-info-deployment -n development
 
 Un pod es la unidad más pequeña de despliegue en Kubernetes y puede contener uno o más contenedores. Los pods comparten recursos como la red y el almacenamiento, lo que facilita la comunicación entre los contenedores y la gestión de los recursos compartidos.
 
+Los pods pueden ser creados via Job, Deployment, StatefulSet, DaemonSet, etc.
+
 ``` bash
 # listar pods con informacion extra
 kubectl get pods -n development -o wide
@@ -174,3 +182,24 @@ spec:
   type: LoadBalancer
 
 ```
+
+### Stateful Workloads
+
+Los "StatefulSets" son controladores de Kubernetes que gestionan aplicaciones con estado, como bases de datos y sistemas de almacenamiento. Los StatefulSets garantizan que los pods se mantengan en un estado consistente y persistente, incluso en caso de fallos o reinicios.
+
+Los dos enfoques principales para manejar el almacenamiento en Kubernetes son:
+- Persistent Volumes: Almacenamiento persistente que sobrevive a la eliminación de los pods.
+- Cluster Storage: Almacenamiento compartido que puede ser accedido por múltiples pods.
+
+### Seguridad
+
+La seguridad en Kubernetes es un aspecto crítico que debe ser tenido en cuenta al implementar aplicaciones en un clúster. Algunas prácticas comunes para mejorar la seguridad en Kubernetes incluyen:
+
+- Limitar los privilegios de los contenedores y los usuarios.
+- Utilizar roles y permisos basados en RBAC (Role-Based Access Control).
+- Habilitar la autenticación y la autorización en el clúster.
+- Implementar políticas de red y firewall para restringir el tráfico no autorizado.
+- Monitorizar y auditar los eventos y las actividades del clúster.
+
+
+
