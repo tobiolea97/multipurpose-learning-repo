@@ -122,12 +122,24 @@ kubectl delete deployment pod-info-deployment -n development
 
 Un pod es la unidad más pequeña de despliegue en Kubernetes y puede contener uno o más contenedores. Los pods comparten recursos como la red y el almacenamiento, lo que facilita la comunicación entre los contenedores y la gestión de los recursos compartidos.
 
-``` yaml
+``` bash
+# listar pods con informacion extra
+kubectl get pods -n development -o wide
+# describe pod
+kubectl describe pod {id} -n development
+# delete pod
+kubectl delete pod {id} -n development
+```
 
+### Using BusyBox
 
-``` 
+BusyBox es una imagen de contenedor ligera y versátil que incluye una colección de utilidades de línea de comandos comunes. Puede ser útil para realizar tareas de depuración y diagnóstico en un clúster de Kubernetes.
 
 ``` bash
-# delete pod
-kubectl delete pod {id] -n development
+kubectl apply -f busybox.yaml
+kubectl exec -it busybox-54f785c7d7-wqpkh -- /bin/sh
+# una vez dentro del contenedor
+nslookup pod-info-service.development.svc.cluster.local
+wget 10.244.0.3:3000
+
 ```
