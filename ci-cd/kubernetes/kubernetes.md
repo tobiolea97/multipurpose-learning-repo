@@ -150,6 +150,14 @@ wget 10.244.0.3:3000
 
 Un servicio de Kubernetes es una abstracción que define un conjunto lógico de pods y una política para acceder a ellos. Los servicios permiten que las aplicaciones se comuniquen entre sí de forma transparente y escalable, independientemente de su ubicación en el clúster.
 
+``` bash
+# start a tunnel
+minikube tunnel
+
+# ver servicios
+kubectl get services -n development
+``` 
+
 ``` yaml
 ---
 apiVersion: v1
@@ -165,4 +173,4 @@ spec:
       targetPort: 3000
   type: LoadBalancer
 
-``` 
+```
