@@ -31,9 +31,9 @@ Kubernetes se utiliza principalmente para gestionar contenedores en un entorno d
     "GitOps" es una metodología de operaciones de TI que utiliza Git como fuente de verdad para la infraestructura y las aplicaciones. En un entorno de GitOps, los cambios en la infraestructura y las aplicaciones se gestionan a través de solicitudes de extracción (pull requests) en un repositorio de Git, lo que permite a los equipos de operaciones y desarrollo colaborar de forma eficiente y mantener un historial de cambios completo y auditable.
 
 
-### Primeros pasos
+## Primeros pasos
 
-1. Crear un cluster con minikube
+#### Crear un cluster con minikube
 ``` bash
 minikube start
 kubectl cluster-info
@@ -43,7 +43,7 @@ kubectl get pods -A
 kubectl get services -A
 ``` 
 
-2. Workspaces
+### Workspaces
 
 Los "workspaces" son espacios de trabajo virtuales que permiten a los usuarios organizar y gestionar sus recursos de forma más eficiente. Cada workspace tiene su propio entorno aislado, lo que facilita la colaboración y la gestión de recursos en entornos compartidos.
 
@@ -67,3 +67,67 @@ kubectl apply -f namespaces.yaml
 kubectl delete -f namespaces.yaml
 kubectl delete namespace development
 ``` 
+### Deployments
+
+Un "deployment" es un controlador de Kubernetes que gestiona la implementación y la escalabilidad de las aplicaciones en el clúster. Los deployments permiten definir el estado deseado de las aplicaciones y garantizar que se mantenga en todo momento.
+
+``` yaml
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-info-deployment
+  namespace: development
+  labels:
+    app: pod-info
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-info
+  template:
+    metadata:
+      labels:
+        app: pod-info
+    spec:
+      containers:
+      - name: pod-info-container
+        image: kimschles/pod-info-app:latest
+        ports:
+        - containerPort: 3000
+        env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+```
+
+``` bash
+kubectl apply -f deployment.yaml
+kubectl get deployments -n development
+kubectl get pods -n development
+kubectl describe deployment pod-info-deployment -n development
+kubectl delete deployment pod-info-deployment -n development
+```
+
+### Pods
+
+Un pod es la unidad más pequeña de despliegue en Kubernetes y puede contener uno o más contenedores. Los pods comparten recursos como la red y el almacenamiento, lo que facilita la comunicación entre los contenedores y la gestión de los recursos compartidos.
+
+``` yaml
+
+
+``` 
+
+``` bash
+# delete pod
+kubectl delete pod {id] -n development
+```
