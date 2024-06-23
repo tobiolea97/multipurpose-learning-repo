@@ -17,6 +17,8 @@ Kubernetes se utiliza principalmente para gestionar contenedores en un entorno d
 
 - Portabilidad: Las aplicaciones gestionadas por Kubernetes pueden ejecutarse en cualquier entorno compatible, desde el local hasta nubes públicas o privadas.
 
+![alt text](image.png)
+
 ### Componentes Clave de Kubernetes
 - Nodo Maestro: Coordina el clúster y gestiona la planificación, el mantenimiento de los estados deseados y la configuración del clúster.
 - Nodos de Trabajo: Ejecutan las aplicaciones y las cargas de trabajo en contenedores.
