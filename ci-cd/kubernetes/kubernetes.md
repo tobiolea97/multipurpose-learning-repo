@@ -268,13 +268,52 @@ La trazabilidad es una técnica que se utiliza en Kubernetes para rastrear y mon
 #### Security
 
 La seguridad es un aspecto crítico en Kubernetes que debe ser tenido en cuenta al implementar aplicaciones en un clúster. Algunas prácticas comunes para mejorar la seguridad en Kubernetes incluyen:
-- Limitar los privilegios de los contenedores y los usuarios.
-- Utilizar roles y permisos basados en RBAC (Role-Based Access Control).
-- Habilitar la autenticación y la autorización en el clúster.
-- Implementar políticas de red y firewall para restringir el tráfico no autorizado.
-- Monitorizar y auditar los eventos y las actividades del clúster.
+- Codigo: Diseño y codigo seguro
+- Imagenes: 
+  - Utilizar imagenes seguras
+    Se puede utilizar servicios image signing como TUF y Notary
+  - Limitar los privilegios de los contenedores y los usuarios.
+- Containers
+  - Asegurar el ambiente de trabajo
+  - Asegurar container networking
+  - Asegurar el sistema operativo host
+- Kubernetes
+  - Seguridad en Kubernetes (componentes)
+    - Aislacion de pods
+    - Control de acceso de aplicaciones
+      - Autenticacion
+        - Usuarios
+        - Cuentas de servicio
+      - Autorizacion
+        - Utilizar roles y permisos basados en RBAC (Role-Based Access Control).
+      - Admicion de control
+        - Intercepta y verifica las solicitudes
+    - Seguridad de pods
+      - Politicas
+      - Recomendaciones
+      - Perfiles
+      - Modos
+    - Seguridad de networks
+    - Seguridad de contexto y politicas
+    - Uso de secretos
+  - Seguridad de Kubernetes (infraestructura)
+    - Malas configuraciones
+    - Configuraicon de acceso
+    - Comunicacion entre componentes del nucleo de Kubernetes
+- Cluseter
+  - Proteger trafico del API server
+  - Proteger componentes del cluster
+  - Proteger utilizacion de recursos
+  - Proteger secretos
+
+  
+  - Habilitar la autenticación y la autorización en el clúster.
+  - Implementar políticas de red y firewall para restringir el tráfico no autorizado.
+  - Monitorizar y auditar los eventos y las actividades del clúster.
 
 
 
 #### Links
 - https://www.cncf.io/blog/2018/03/08/introducing-the-cloud-native-landscape-2-0-interactive-edition/
+
+
