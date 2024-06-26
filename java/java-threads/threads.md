@@ -79,6 +79,48 @@ class MyRunnable implements Runnable {
 // Creating and starting a thread
 Thread thread1 = new MyThread();
 thread1.start();
+
+// Creating and starting a thread using a Runnable
+Runnable runnable = new MyRunnable();
+Thread thread2 = new Thread(runnable);
+thread2.start();
+
+// Using lambda expression to define the task
+Thread thread3 = new Thread(() -> {
+    // Task to be executed by the thread
+});
+thread3.start();
+
+// Pausing a thread
+try {
+    Thread.sleep(1000); // Sleep for 1 second
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
+
+// Interrupting a thread
+thread1.interrupt();
+
+// Checking if a thread is interrupted
+if (Thread.interrupted()) {
+    // Thread is interrupted
+}
+
+// interrupted vs isInterrupted
+if (Thread.interrupted()) {
+    // Thread is interrupted
+}
+if (thread1.isInterrupted()) {
+    // Thread is interrupted
+}
+
+// Waiting for a thread to finish
+try {
+    thread1.join(); // Wait for thread1 to finish
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
+
 ```
 
 ### Basic example:
@@ -118,4 +160,25 @@ public class Main {
 }
 ```
 
+### Useful methods:
+
+- `start()`: Starts the thread by calling the `run()` method.
+- `run()`: Contains the code that will be executed by the thread.
+- `sleep()`: Pauses the thread for a specified amount of time.
+- `interrupt()`: Interrupts the thread, causing it to stop executing.
+- `join()`: Waits for the thread to finish its execution.
+- `isAlive()`: Checks if the thread is still running.
+- `yield()`: Gives up the CPU to allow other threads to run.
+- `setName()`: Sets the name of the thread.
+- `getName()`: Gets the name of the thread.
+
+### Thread Priority:
+
+Threads can have a priority ranging from 1 to 10, with 1 being the lowest priority and 10 being the highest priority. The default priority is 5. The priority of a thread can be set using the `setPriority()` method.
+
 ```java
+Thread thread = new Thread();
+thread.setPriority(Thread.MAX_PRIORITY); // Set the priority to the maximum value
+```
+
+### Thread Group:
