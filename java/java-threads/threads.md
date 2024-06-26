@@ -7,10 +7,13 @@ The benefits of using threads include:
 - **Responsive user interface**: By using threads, you can keep the user interface responsive while performing time-consuming tasks in the background.
 - **Simplified programming**: Threads can simplify the programming of complex applications by allowing different tasks to be executed concurrently.
 
+---
 #### Glossary:
 - **Thread**: A lightweight sub-process that can be executed concurrently with other threads.
 - **Concurrency**: The ability of an application to execute multiple tasks at the same time.
 - **Parallelism**: The ability of an application to execute multiple tasks simultaneously on multiple processors.
+
+---
 
 #### Process vs. Thread:
 
@@ -52,7 +55,9 @@ A thread pool is a collection of pre-initialized threads that can be used to exe
 
 Thread local storage allows each thread to have its own copy of a variable, which is not shared with other threads. This can be useful for storing thread-specific data.
 
-#### Implementing Threads in Java:
+---
+
+### Implementing Threads in Java:
 
 Threads can be implemented in Java by extending the `Thread` class or implementing the `Runnable` interface. The `Thread` class provides methods for creating, starting, and managing threads, while the `Runnable` interface provides a way to define the task that a thread will execute.
 
@@ -75,3 +80,42 @@ class MyRunnable implements Runnable {
 Thread thread1 = new MyThread();
 thread1.start();
 ```
+
+### Basic example:
+
+```java
+
+public class FirstThread extends Thread {
+
+    private int number;
+
+    public FirstThread(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        for(int i = 1; i <=5 ; i++) {
+            System.out.println(i + " from the thread " + number);
+        }
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        for(int count = 1; count <=3; count++) {
+            FirstThread thread = new FirstThread(count);
+            thread.start();
+        }
+
+        MyRunnable myRunnable = new MyRunnable();
+        Thread thread = new Thread(myRunnable);
+        Thread thread2 = new Thread(myRunnable);
+        thread.start();
+    }
+}
+```
+
+```java
