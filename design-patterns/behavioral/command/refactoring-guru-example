@@ -1,0 +1,54 @@
+// Interface Command
+public interface Command {
+    void execute();
+    void undo();
+}
+
+// Implementaciones concretas de comandos
+public class WriteCommand implements Command {
+    private Document document;
+    private String text;
+
+    public WriteCommand(Document document, String text) {
+        this.document = document;
+        this.text = text;
+    }
+
+    @Override
+    public void execute() {
+        document.write(text);
+    }
+
+    @Override
+    public void undo() {
+        document.erase(text);
+    }
+}
+
+// Receptor
+public class Document {
+    public void write(String text) {
+        // lógica para escribir texto
+    }
+
+    public void erase(String text) {
+        // lógica para borrar texto
+    }
+}
+
+// Invoker
+public class TextEditor {
+    private Command command;
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
+    public void executeCommand() {
+        command.execute();
+    }
+
+    public void undoCommand() {
+        command.undo();
+    }
+}
