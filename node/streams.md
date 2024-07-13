@@ -6,6 +6,7 @@ Streams are objects that let you read data from a source or write data to a dest
 - Writable: streams to which data can be written (e.g., `fs.createWriteStream()`).
 - Duplex: streams that are both Readable and Writable (e.g., `net.Socket`).
 - Transform: Duplex streams that can modify or transform the data as it is written and read (e.g., `zlib.createGzip()`).
+- Backpressure: Streams are designed to handle backpressure, which is a mechanism to prevent the fast producer from overwhelming the slow consumer. When the writable stream is not ready to receive data, it will signal the readable stream to stop reading data until the writable stream is ready again.
 
 ## Benefits
 
