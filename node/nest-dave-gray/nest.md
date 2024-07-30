@@ -13,3 +13,12 @@
 - `nest --version` - Display the current Nest version
 - `nest --help` - Display the list of available commands
 - `nest --help <command>` - Display the help for a specific command
+
+
+### Info
+
+- Usamos CORS para permitir que el front end se comunique con el backend. Es importante configurar el "allow-origins"
+- Usamos rate limit para impedir ataques de fuerza bruta
+- Usamos Prisma como ORM
+- Usamos Neon como base de datos Postgres
+- Si bien nuestros servicios son async, quien consume un metodo await es prisma
