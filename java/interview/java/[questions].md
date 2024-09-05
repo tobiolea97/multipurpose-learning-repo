@@ -1,16 +1,16 @@
 # Java
 ## Foundations
-- ¿Qué es la reflexión en Java y cómo la utilizas en el desarrollo de aplicaciones?
-- ¿Cuál es la diferencia entre @Component, @Service y @Repository en Spring Boot?
+
 - ¿Cómo implementarías la autenticación basada en token JWT en una aplicación Spring Boot?
 - ¿Cuál es la diferencia entre una conexión JDBC y una conexión JNDI?
 - ¿Qué es el patrón DAO (Data Access Object) y cuál es su propósito en el desarrollo de aplicaciones Java?
-- ¿Qué es la anotación @Transactional en Spring y cómo la utilizarías en un método de servicio?
+
 - ¿Qué es HATEOAS (Hypermedia as the Engine of Application State) y cómo se aplica en el desarrollo de APIs RESTful?
 - ¿Cómo implementarías la protección contra ataques de inyección de SQL en una aplicación Java Backend?
-- ¿Cuál es la diferencia entre un Stream secuencial y un Stream paralelo?
-- ¿Qué son los métodos de referencia (method references) en Java 8 y cómo se utilizan en la programación funcional?
-- ¿Qué es la anotación @FunctionalInterface en Java y cuál es su propósito?
+
+
+
+
 
 ## Architectural
 - ¿Cómo implementarías la tolerancia a fallos en una aplicación Spring Boot?
@@ -29,48 +29,48 @@
 - ¿Cómo optimizas consultas SQL para mejorar el rendimiento de una aplicación?
 - ¿Cuándo elegirías una solución NoSQL sobre una base de datos relacional en una aplicación Java Backend?
 
-
-Preguntas técnicas generales
-
-
-
-¿Qué son las excepciones en Java? ¿Cómo las manejas?
-Explica la diferencia entre checked y unchecked exceptions.
-¿Qué es el manejo de errores con try-catch-finally en Java?
-
+## Concurrencia
 ¿Cómo funciona el manejo de concurrencia en Java?
 ¿Qué son los hilos (threads) en Java y cómo se crean?
 ¿Qué es un "deadlock" y cómo lo evitas en Java?
 Explica el uso de la palabra clave synchronized.
+
+## Colecciones
 ¿Qué son las colecciones en Java? Nombra algunas clases importantes del framework de colecciones.
 Explica la diferencia entre ArrayList y LinkedList.
 ¿Cómo funciona un HashMap en Java?
+
+
+## OOP
+¿Qué es el concepto de "programación orientada a objetos" (OOP) y cuáles son sus principios?
 ¿Qué es el polimorfismo en Java?
 ¿Qué es la herencia y cómo se implementa en Java?
 ¿Qué son las interfaces y las clases abstractas en Java?
 ¿Cuál es la diferencia entre una clase abstracta y una interfaz?
 ¿Qué es la sobrecarga (overloading) y la sobrescritura (overriding) de métodos en Java?
 ¿Qué es una Enum en Java y cómo se usa?
-¿Qué es la programación genérica en Java?
-Explica la diferencia entre Comparator y Comparable.
-¿Qué es el concepto de "programación orientada a objetos" (OOP) y cuáles son sus principios?
-¿Qué es la serialización en Java?
-¿Cómo funciona la palabra clave final en Java?
-¿Qué es la reflexión (reflection) en Java y cuándo la usarías?
-¿Qué son los lambdas en Java? ¿Cómo se usan?
-¿Qué es un Stream en Java? Explica su uso.
+
+
+
+
+
+
+## Patrones
 Explica el patrón de diseño Singleton en Java.
 ¿Cómo implementas el patrón de diseño Factory en Java?
 ¿Qué es el patrón de diseño Observer?
 ¿Qué es el patrón de diseño Strategy?
-¿Qué son las anotaciones en Java? ¿Puedes crear tus propias anotaciones?
-Preguntas sobre frameworks y herramientas
-¿Qué es Spring Framework y cuáles son sus principales módulos?
-¿Cómo configuras una aplicación Spring Boot desde cero?
-Explica la inyección de dependencias en Spring.
-¿Qué son los componentes de Spring (@Component, @Service, @Repository)?
-¿Qué es una Bean en Spring y cómo la defines?
+
+
+
+
+## AOP
+
 Explica el concepto de aspecto (aspect) y programación orientada a aspectos (AOP) en Spring.
+
+
+
+
 ¿Qué es Spring Data JPA y cómo lo usas?
 ¿Cómo configuras una transacción en Spring?
 ¿Qué es Spring Security y cómo lo implementas?
@@ -211,27 +211,7 @@ La palabra clave volatile en Java se utiliza para indicar que una variable puede
 - StringBuilder: Mutable, se puede modificar sin crear una nueva instancia. Más eficiente para operaciones de concatenación y modificación de cadenas.
 - StringBuffer: Similar a StringBuilder, pero sincronizado y seguro para hilos. Menos eficiente que StringBuilder en entornos no concurrentes.
 
-## ¿Qué es un framework?
 
-Conjunto de herramientas, bibliotecas y reglas que proporcionan una estructura predefinida para desarrollar aplicaciones o soluciones en un lenguaje de programación específico.
-
-## ¿Qué es spring?
-
-Spring es un framework que se enfoca en proporcionar una infraestructura sólida para manejar las preocupaciones comunes en las aplicaciones empresariales, como la:
-
-- Gestión de transacciones
-- La inyección de dependencias
-- La integración con bases de datos
-- Seguridad
-
-## ¿Qué es Springboot?
-
-Framework que simplifica la configuración y el desarrollo de aplicaciones al proporcionar una serie de configuraciones automáticas y herramientas que permiten a los desarrolladores centrarse más en la lógica de la aplicación en lugar de en la configuración manual del proyecto. Se ocupa de:
-
-- Configuración automática
-- Embalado sencillo
-- Dependencias administradas (starters)
-- Microservicios
 
 ## ¿Qué es la reflexión y como se usa en el desarrollo de aplicaciones?
 

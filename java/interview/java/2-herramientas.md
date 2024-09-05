@@ -129,3 +129,18 @@ Son clases abstractas para el manejo de flujos de datos en bytes. InputStream se
         e.printStackTrace();
     }
 ```
+
+
+## Preguntas
+
+- ¿Qué son las excepciones en Java? ¿Cómo las manejas?
+- ¿Qué es la serialización en Java y por qué es importante?
+- ¿Qué es el manejo de errores con try-catch-finally en Java?
+- ¿Para que se usa try-with-resources en Java?
+- Explica la diferencia entre checked y unchecked exceptions.
+- ¿Qué es la programación genérica en Java?
+
+
+## Anotaciones
+
+¿Qué son las anotaciones en Java? ¿Puedes crear tus propias anotaciones?

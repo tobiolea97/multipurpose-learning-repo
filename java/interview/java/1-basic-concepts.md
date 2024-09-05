@@ -44,3 +44,11 @@ Los wrappers son clases que envuelven los tipos primitivos de Java y proporciona
 - Variable de clase: Se declara con la palabra clave static y es compartida por todas las instancias de la clase.
 - Variable de instancia: Se declara sin la palabra clave static y es única para cada instancia de la clase.
 - Variable local: Se declara dentro de un método o bloque y solo es accesible dentro de ese ámbito.
+
+
+
+## Preguntas
+- ¿Qué es la reflexión en Java y cómo la utilizas en el desarrollo de aplicaciones?
+- ¿Cuál es la diferencia entre un Stream secuencial y un Stream paralelo?
+- Explica la diferencia entre Comparator y Comparable.
+- ¿Cómo funciona la palabra clave final en Java?
