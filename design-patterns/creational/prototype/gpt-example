@@ -1,0 +1,61 @@
+import java.util.HashMap;
+import java.util.Map;
+
+// Interfaz Prototype
+interface Prototype {
+    Prototype clone();
+}
+
+// Clase concreta que implementa Prototype
+class ConcretePrototype implements Prototype {
+    private String name;
+
+    public ConcretePrototype(String name) {
+        this.name = name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public Prototype clone() {
+        return new ConcretePrototype(name);
+    }
+}
+
+// Cliente que utiliza el patrón Prototype
+class PrototypeRegistry {
+    private Map<String, Prototype> prototypes = new HashMap<>();
+
+    public void addPrototype(String key, Prototype prototype) {
+        prototypes.put(key, prototype);
+    }
+
+    public Prototype getPrototype(String key) {
+        return prototypes.get(key).clone();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PrototypeRegistry registry = new PrototypeRegistry();
+
+        // Crear y registrar prototipos
+        ConcretePrototype prototype1 = new ConcretePrototype("Prototype 1");
+        registry.addPrototype("proto1", prototype1);
+
+        // Clonar prototipos
+        ConcretePrototype clone1 = (ConcretePrototype) registry.getPrototype("proto1");
+        System.out.println("Clon 1: " + clone1.getName());
+
+        // Modificar y clonar nuevamente
+        clone1.setName("Modified Prototype 1");
+        ConcretePrototype clone2 = (ConcretePrototype) registry.getPrototype("proto1");
+        System.out.println("Clon 2: " + clone2.getName());
+    }
+}

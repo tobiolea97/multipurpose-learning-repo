@@ -1,0 +1,56 @@
+// Implementor
+interface DrawAPI {
+    void drawCircle(int radius, int x, int y);
+}
+
+// ConcreteImplementor 1
+class DrawAPI2D implements DrawAPI {
+    public void drawCircle(int radius, int x, int y) {
+        System.out.println("Drawing Circle[ 2D, radius: " + radius + ", x: " + x + ", y: " + y + "]");
+    }
+}
+
+// ConcreteImplementor 2
+class DrawAPI3D implements DrawAPI {
+    public void drawCircle(int radius, int x, int y) {
+        System.out.println("Drawing Circle[ 3D, radius: " + radius + ", x: " + x + ", y: " + y + "]");
+    }
+}
+
+// Abstraction
+abstract class Shape {
+    protected DrawAPI drawAPI;
+
+    protected Shape(DrawAPI drawAPI) {
+        this.drawAPI = drawAPI;
+    }
+
+    public abstract void draw();
+}
+
+// RefinedAbstraction
+class Circle extends Shape {
+    private int x, y, radius;
+
+    public Circle(int x, int y, int radius, DrawAPI drawAPI) {
+        super(drawAPI);
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+
+    public void draw() {
+        drawAPI.drawCircle(radius, x, y);
+    }
+}
+
+// Cliente
+public class BridgePatternDemo {
+    public static void main(String[] args) {
+        Shape circle2D = new Circle(100, 100, 10, new DrawAPI2D());
+        Shape circle3D = new Circle(100, 100, 10, new DrawAPI3D());
+
+        circle2D.draw();
+        circle3D.draw();
+    }
+}

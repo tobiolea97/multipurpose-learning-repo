@@ -1,0 +1,79 @@
+// Componente
+public interface Beverage {
+    String getDescription();
+    double cost();
+}
+
+// Componente Concreto
+public class Espresso implements Beverage {
+    @Override
+    public String getDescription() {
+        return "Espresso";
+    }
+
+    @Override
+    public double cost() {
+        return 1.99;
+    }
+}
+
+// Decorador
+public abstract class BeverageDecorator implements Beverage {
+    protected Beverage beverage;
+
+    public BeverageDecorator(Beverage beverage) {
+        this.beverage = beverage;
+    }
+
+    @Override
+    public String getDescription() {
+        return beverage.getDescription();
+    }
+}
+
+// Decoradores Concretos
+public class MilkDecorator extends BeverageDecorator {
+    public MilkDecorator(Beverage beverage) {
+        super(beverage);
+    }
+
+    @Override
+    public String getDescription() {
+        return beverage.getDescription() + ", Milk";
+    }
+
+    @Override
+    public double cost() {
+        return beverage.cost() + 0.50;
+    }
+}
+
+public class SugarDecorator extends BeverageDecorator {
+    public SugarDecorator(Beverage beverage) {
+        super(beverage);
+    }
+
+    @Override
+    public String getDescription() {
+        return beverage.getDescription() + ", Sugar";
+    }
+
+    @Override
+    public double cost() {
+        return beverage.cost() + 0.20;
+    }
+}
+
+// Uso del Decorador
+public class CoffeeShop {
+    public static void main(String[] args) {
+        Beverage espresso = new Espresso();
+        System.out.println(espresso.getDescription() + " $" + espresso.cost());
+
+        Beverage espressoWithMilk = new MilkDecorator(espresso);
+        System.out.println(espressoWithMilk.getDescription() + " $" + espressoWithMilk.cost());
+
+        Beverage espressoWithMilkAndSugar = new SugarDecorator(espressoWithMilk);
+        System.out.println(espressoWithMilkAndSugar.getDescription() + " $" + espressoWithMilkAndSugar.cost());
+    }
+}
