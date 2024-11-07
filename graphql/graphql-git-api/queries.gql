@@ -1,0 +1,83 @@
+query BasicQuery {
+  user(login: "tobiolea97") {
+    name
+    location
+    bio
+    repositories {
+      totalCount
+    }
+  }
+}
+
+query ArgsQuery {
+  user(login: "tobiolea97") {
+    repositories(
+      first: 5
+      isFork: false
+      orderBy: { field: CREATED_AT, direction: DESC }
+    ) {
+      nodes {
+        name
+        createdAt
+        description
+      }
+    }
+  }
+}
+
+query NestedQuery {
+  user(login: "tobiolea97") {
+    repositories(first: 5) {
+      nodes {
+        name
+        issues(first: 3, states: OPEN) {
+          nodes {
+            title
+            createdAt
+            author {
+              login
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query Aliases {
+  user(login: "tobiolea97") {
+    seLLama: name
+    viveEn: location
+    sobreElBroderEnCuestion: bio
+    coding: repositories(first: 3) {
+      nodes {
+        repoName: name
+        repoDescription: description
+      }
+    }
+  }
+}
+
+query FragmentQueries {
+  user(login: "tobiolea97") {
+    repositories(first: 5) {
+      nodes {
+        ...RepoInfo
+      }
+    }
+    starredRepositories(first: 5) {
+      nodes {
+        ...RepoInfo
+      }
+    }
+  }
+}
+
+fragment RepoInfo on Repository {
+  name
+  description
+  createdAt
+  stargazerCount
+  forkCount
+}
+
